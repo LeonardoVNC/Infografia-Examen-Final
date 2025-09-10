@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3lfauj5finik"]
+
+[ext_resource type="Script" uid="uid://cwgiy121lvt74" path="res://scripts/fight_options.gd" id="1_2dddj"]
+[ext_resource type="PackedScene" uid="uid://cmlyjfrdq75xa" path="res://scenes/InFightOption.tscn" id="1_qsb8j"]
+
+[node name="FightOptions" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -76.0
+offset_bottom = -414.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2dddj")
+
+[node name="FightOption" parent="." instance=ExtResource("1_qsb8j")]
+layout_mode = 2
+
+[node name="ActOption" parent="." instance=ExtResource("1_qsb8j")]
+layout_mode = 2
+
+[node name="ItemOption" parent="." instance=ExtResource("1_qsb8j")]
+layout_mode = 2
+
+[node name="MercyOption" parent="." instance=ExtResource("1_qsb8j")]
+layout_mode = 2

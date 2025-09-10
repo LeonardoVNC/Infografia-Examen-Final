@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmlyjfrdq75xa"]
+
+[ext_resource type="Texture2D" uid="uid://bstymes4mo6kh" path="res://assets/Option.png" id="1_8tbg8"]
+[ext_resource type="Script" uid="uid://b6e53kf5o6u8v" path="res://scripts/in_fight_option.gd" id="2_77ox0"]
+[ext_resource type="FontFile" uid="uid://b8rsvuqqwe8t3" path="res://assets/fonts/en/fnt_main.ttf" id="3_h5l6l"]
+[ext_resource type="Texture2D" uid="uid://e5sybdgvwqqp" path="res://assets/Fight.png" id="4_tsfup"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vtkkq"]
+font = ExtResource("3_h5l6l")
+font_size = 38
+font_color = Color(1, 0.627451, 0.00392157, 1)
+
+[node name="InFightOption" type="TextureRect"]
+texture = ExtResource("1_8tbg8")
+script = ExtResource("2_77ox0")
+metadata/_edit_vertical_guides_ = [47.0]
+metadata/_edit_horizontal_guides_ = [30.0]
+
+[node name="Text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 7.0
+offset_right = 134.0
+offset_bottom = 59.0
+text = "test"
+label_settings = SubResource("LabelSettings_vtkkq")
+vertical_alignment = 1
+uppercase = true
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 16.0
+offset_right = 44.0
+offset_bottom = 48.0
+texture = ExtResource("4_tsfup")
+expand_mode = 3
+stretch_mode = 5

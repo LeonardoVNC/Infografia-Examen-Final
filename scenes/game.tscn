@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://5y460unwv8l7"]
+[gd_scene load_steps=5 format=3 uid="uid://5y460unwv8l7"]
 
 [ext_resource type="Texture2D" uid="uid://d31l6y55f4yl6" path="res://assets/background.png" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://birfv6m0k36kn" path="res://scenes/player.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://x1gjxuymob11" path="res://scenes/Scenario.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://b3lfauj5finik" path="res://scenes/FightOptions.tscn" id="4_lbhrr"]
 
 [node name="Game" type="TextureRect"]
 texture = ExtResource("1_yqjtg")
@@ -14,3 +15,10 @@ position = Vector2(320, 320)
 
 [node name="Scenario" parent="." instance=ExtResource("3_lnu2h")]
 position = Vector2(320, 320)
+
+[node name="FightOptions" parent="." instance=ExtResource("4_lbhrr")]
+layout_mode = 1
+offset_left = 38.0
+offset_top = 404.0
+offset_right = -38.0
+offset_bottom = -10.0
