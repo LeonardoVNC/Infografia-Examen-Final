@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxlh6y68jpxht"]
+
+[ext_resource type="Script" uid="uid://bcxijfpmpnqgu" path="res://scripts/option.gd" id="1_6b6wo"]
+[ext_resource type="Texture2D" uid="uid://ckf6fbcumimtn" path="res://assets/Soul.png" id="1_16aao"]
+[ext_resource type="FontFile" uid="uid://b8rsvuqqwe8t3" path="res://assets/fonts/en/fnt_main.ttf" id="2_6b6wo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dlcxs"]
+font = ExtResource("2_6b6wo")
+
+[node name="Option" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -535.0
+offset_bottom = -440.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6b6wo")
+metadata/_edit_horizontal_guides_ = [40.0]
+metadata/_edit_vertical_guides_ = [105.0]
+
+[node name="Player" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("1_16aao")
+stretch_mode = 4
+
+[node name="Texto" type="Label" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_right = 105.0
+offset_bottom = 40.0
+text = "Ejemplo"
+label_settings = SubResource("LabelSettings_dlcxs")

@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://1yblgn0m2cu1"]
+
+[ext_resource type="Texture2D" uid="uid://d31l6y55f4yl6" path="res://assets/background.png" id="1_vjb58"]
+[ext_resource type="Script" uid="uid://c3b5p4x8kcxkm" path="res://scripts/menu.gd" id="2_4ytvr"]
+[ext_resource type="Texture2D" uid="uid://ve14fmtc8ubk" path="res://assets/Undertale-Logo.png" id="2_con2f"]
+[ext_resource type="FontFile" uid="uid://b5yss1q0iefku" path="res://assets/fonts/en/fnt_small.ttf" id="3_con2f"]
+[ext_resource type="PackedScene" uid="uid://cxlh6y68jpxht" path="res://scenes/Option.tscn" id="4_mhnvy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mhnvy"]
+font = ExtResource("3_con2f")
+font_size = 20
+font_color = Color(1, 1, 0, 1)
+
+[node name="Menu" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_vjb58")
+script = ExtResource("2_4ytvr")
+metadata/_edit_vertical_guides_ = [320.0]
+metadata/_edit_horizontal_guides_ = [240.0]
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 92.0
+offset_right = 558.0
+offset_bottom = 344.0
+texture = ExtResource("2_con2f")
+expand_mode = 3
+
+[node name="Subtitulo raro" type="Label" parent="."]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 246.0
+offset_right = 599.0
+offset_bottom = 277.0
+text = "Sanana"
+label_settings = SubResource("LabelSettings_mhnvy")
+horizontal_alignment = 1
+
+[node name="OptionPlay" parent="." instance=ExtResource("4_mhnvy")]
+layout_mode = 1
+offset_left = 268.0
+offset_top = 328.0
+offset_right = -267.0
+offset_bottom = -112.0
+
+[node name="OptionExit" parent="." instance=ExtResource("4_mhnvy")]
+layout_mode = 1
+offset_left = 268.0
+offset_top = 378.0
+offset_right = -267.0
+offset_bottom = -62.0
