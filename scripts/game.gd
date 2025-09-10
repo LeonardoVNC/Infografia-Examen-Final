@@ -8,6 +8,7 @@ extends TextureRect
 enum states {PREPARATION, PLAYER_TURN, ATTACK, DIALOGUE}
 var state = states.PREPARATION
 var can_change_option = true
+var items: Array[String] = ["Fideos", "Pie", "Héroe Leg.", "Héroe Leg.", "Héroe Leg."]
 
 func _ready() -> void:
 	FightOptions.hide()
@@ -15,6 +16,7 @@ func _ready() -> void:
 	FightOptions.act.connect(_on_option_act)
 	FightOptions.item.connect(_on_option_item)
 	FightOptions.mercy.connect(_on_option_mercy)
+	FightOptions.set_items(items)
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -87,8 +89,8 @@ func _on_option_fight():
 func _on_option_act():
 	print("El jugador debe actuar wiii")
 	
-func _on_option_item():
-	print("el jugador debe comer alguito")
+func _on_option_item(item_name):
+	print("el jugador debe comer alguito:", item_name)
 
 func _on_option_mercy():
 	print("el jugador perdona")

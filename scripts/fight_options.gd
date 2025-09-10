@@ -21,10 +21,11 @@ var options = []
 var actual_upper_option=0
 var able_options = 0
 var upper_options = []
+var items = []
 
 signal fight
 signal act
-signal item
+signal item(item_name)
 signal mercy
 
 const SPRITES = {
@@ -149,8 +150,7 @@ func execute_bottom_option():
 		1:
 			set_upper_options(["Observar"])
 		2: 
-			#TODO-Hay que cargar estos dinámicamente
-			set_upper_options(["Fideos", "Héroe Leg.", "Héroe Leg.", "Héroe Leg.", "Héroe Leg."])
+			set_upper_options(items)
 		3:
 			set_upper_options(["Perdonar"])
 		
@@ -172,11 +172,13 @@ func act_upper_option():
 	act.emit()
 	
 func item_upper_option():
-	#TODO-hay que meter mucha lógica aqui
-	item.emit("a")
+	item.emit(items[actual_upper_option])
 	
 func mercy_upper_option():
 	mercy.emit()
+
+func set_items(item_list: Array[String]):
+	items = item_list
 
 func go_back():
 	_set_bottom()
