@@ -15,9 +15,9 @@ metadata/_edit_horizontal_guides_ = [400.0, 240.0, 320.0]
 [node name="FightOptions" parent="." instance=ExtResource("4_lbhrr")]
 layout_mode = 1
 offset_left = 38.0
-offset_top = 404.0
+offset_top = 403.0
 offset_right = -38.0
-offset_bottom = -10.0
+offset_bottom = -11.0
 
 [node name="Soul" parent="." instance=ExtResource("2_lnu2h")]
 position = Vector2(320, 320)

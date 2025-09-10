@@ -43,4 +43,18 @@ func option_right():
 	options[actual_option].set_selected()
 
 func execute_option():
-	print("TODO-ejecutar opciones de pelea")
+	match actual_option:
+		0:
+			print("Ataqueeen")
+			fight.emit()
+		1:
+			print("Actueeeen")
+			act.emit()
+		2: 
+			print("Estan mejor crudooos")
+			#Aqui el propio jugador debería recuperar su vida supongo, no hay pq mandar lógica a game asdfl
+			item.emit()
+		3:
+			print("*no hace nada*")
+			mercy.emit()
+	

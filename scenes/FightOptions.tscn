@@ -11,6 +11,7 @@ offset_right = -76.0
 offset_bottom = -414.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 script = ExtResource("1_2dddj")
 
 [node name="FightOption" parent="." instance=ExtResource("1_qsb8j")]
