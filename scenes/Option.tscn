@@ -6,6 +6,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_dlcxs"]
 font = ExtResource("2_6b6wo")
+font_size = 22
 
 [node name="Option" type="Control"]
 layout_mode = 3
@@ -22,8 +23,9 @@ metadata/_edit_vertical_guides_ = [105.0]
 
 [node name="Player" type="TextureRect" parent="."]
 layout_mode = 0
+offset_top = 4.0
 offset_right = 16.0
-offset_bottom = 16.0
+offset_bottom = 20.0
 texture = ExtResource("1_16aao")
 stretch_mode = 4
 

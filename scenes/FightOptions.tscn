@@ -1,27 +1,101 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3lfauj5finik"]
+[gd_scene load_steps=7 format=3 uid="uid://b3lfauj5finik"]
 
 [ext_resource type="Script" uid="uid://cwgiy121lvt74" path="res://scripts/fight_options.gd" id="1_2dddj"]
 [ext_resource type="PackedScene" uid="uid://cmlyjfrdq75xa" path="res://scenes/InFightOption.tscn" id="1_qsb8j"]
+[ext_resource type="Texture2D" uid="uid://cmqtff3vxiki3" path="res://assets/Menu.png" id="2_dgfc8"]
+[ext_resource type="PackedScene" uid="uid://cxlh6y68jpxht" path="res://scenes/Option.tscn" id="3_ceokx"]
+[ext_resource type="FontFile" uid="uid://bprgjnaa7xvtv" path="res://assets/fonts/custom/fnt_maintext.ttf" id="3_layea"]
 
-[node name="FightOptions" type="HBoxContainer"]
+[sub_resource type="LabelSettings" id="LabelSettings_mbje4"]
+font = ExtResource("3_layea")
+font_size = 22
+
+[node name="FightOptions" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -76.0
-offset_bottom = -414.0
+offset_right = -75.0
+offset_bottom = -252.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
 script = ExtResource("1_2dddj")
+metadata/_edit_vertical_guides_ = [60.0, 282.0, 342.0]
+metadata/_edit_horizontal_guides_ = [40.0, 80.0, 120.0]
 
-[node name="FightOption" parent="." instance=ExtResource("1_qsb8j")]
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UpperOptions" type="TextureRect" parent="VBox"]
+layout_mode = 2
+texture = ExtResource("2_dgfc8")
+
+[node name="Description" type="Label" parent="VBox/UpperOptions"]
+visible = false
+layout_mode = 2
+offset_left = 38.0
+offset_top = 23.0
+offset_right = 533.0
+offset_bottom = 99.0
+text = "* Texto medianamente largo pero puramente de ejemplo muchachos"
+label_settings = SubResource("LabelSettings_mbje4")
+autowrap_mode = 3
+
+[node name="Option1" parent="VBox/UpperOptions" instance=ExtResource("3_ceokx")]
+layout_mode = 1
+offset_left = 38.0
+offset_top = 27.0
+offset_right = -426.0
+offset_bottom = -92.0
+
+[node name="Option2" parent="VBox/UpperOptions" instance=ExtResource("3_ceokx")]
+layout_mode = 1
+offset_left = 320.0
+offset_top = 27.0
+offset_right = -144.0
+offset_bottom = -92.0
+
+[node name="Option3" parent="VBox/UpperOptions" instance=ExtResource("3_ceokx")]
+layout_mode = 1
+offset_left = 38.0
+offset_top = 67.0
+offset_right = -426.0
+offset_bottom = -52.0
+
+[node name="Option4" parent="VBox/UpperOptions" instance=ExtResource("3_ceokx")]
+layout_mode = 1
+offset_left = 320.0
+offset_top = 67.0
+offset_right = -144.0
+offset_bottom = -52.0
+
+[node name="Option5" parent="VBox/UpperOptions" instance=ExtResource("3_ceokx")]
+layout_mode = 1
+offset_left = 38.0
+offset_top = 107.0
+offset_right = -426.0
+offset_bottom = -12.0
+
+[node name="Option6" parent="VBox/UpperOptions" instance=ExtResource("3_ceokx")]
+layout_mode = 1
+offset_left = 320.0
+offset_top = 107.0
+offset_right = -144.0
+offset_bottom = -12.0
+
+[node name="BottomOptions" type="HBoxContainer" parent="VBox"]
 layout_mode = 2
 
-[node name="ActOption" parent="." instance=ExtResource("1_qsb8j")]
+[node name="FightOption" parent="VBox/BottomOptions" instance=ExtResource("1_qsb8j")]
 layout_mode = 2
 
-[node name="ItemOption" parent="." instance=ExtResource("1_qsb8j")]
+[node name="ActOption" parent="VBox/BottomOptions" instance=ExtResource("1_qsb8j")]
 layout_mode = 2
 
-[node name="MercyOption" parent="." instance=ExtResource("1_qsb8j")]
+[node name="ItemOption" parent="VBox/BottomOptions" instance=ExtResource("1_qsb8j")]
+layout_mode = 2
+
+[node name="MercyOption" parent="VBox/BottomOptions" instance=ExtResource("1_qsb8j")]
 layout_mode = 2

@@ -40,13 +40,17 @@ func player_turn_state():
 	if Input.is_action_just_pressed("Action"):
 		FightOptions.execute_option()
 		return
+		
+	if Input.is_action_just_pressed("Back"):
+		FightOptions.go_back()
+		return	
 	
 	if (can_change_option):
 		var input_vector = Vector2.ZERO
 		input_vector.x = Input.get_axis("ui_left", "ui_right")
 		input_vector = input_vector.normalized()
 		
-		OptionTimer.start(0.1)
+		OptionTimer.start(0.12)
 		can_change_option = false
 		if input_vector != Vector2.ZERO:
 			if input_vector.x == -1:
