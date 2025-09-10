@@ -11,6 +11,7 @@ font_size = 38
 font_color = Color(1, 0.627451, 0.00392157, 1)
 
 [node name="InFightOption" type="TextureRect"]
+modulate = Color(0.92049, 0.876978, 0, 1)
 texture = ExtResource("1_8tbg8")
 script = ExtResource("2_77ox0")
 metadata/_edit_vertical_guides_ = [47.0]

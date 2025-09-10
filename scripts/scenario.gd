@@ -5,7 +5,8 @@ extends Node2D
 @export var border_color = Color(1, 1, 1)
 
 func _ready():
-	_create_walls()
+	print("TODO-Arreglar escenario")
+	#_create_walls()
 
 func _create_walls():
 	var walls = $Walls.get_children()
@@ -36,7 +37,8 @@ func _update_walls():
 	$Walls/WallRight/CollisionShape2D.shape.extents = Vector2(half_thick, half_size.y)
 
 func _draw():
-	draw_rect(Rect2(-area_size / 2, area_size), border_color, false, wall_thickness)
+	print("TODO-Arreglar dibujado de escenario")
+	#draw_rect(Rect2(-area_size / 2, area_size), border_color, false, wall_thickness)
 
 func set_area_size(new_size: Vector2) -> void:
 	area_size = new_size
