@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://x1gjxuymob11"]
+
+[ext_resource type="Script" uid="uid://qqhi1oce1vd2" path="res://scripts/scenario.gd" id="1_cw6oh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cw6oh"]
+
+[node name="Scenario" type="Node2D"]
+script = ExtResource("1_cw6oh")
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="WallTop" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallTop"]
+shape = SubResource("RectangleShape2D_cw6oh")
+
+[node name="WallBottom" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallBottom"]
+shape = SubResource("RectangleShape2D_cw6oh")
+
+[node name="WallLeft" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallLeft"]
+shape = SubResource("RectangleShape2D_cw6oh")
+
+[node name="WallRight" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallRight"]
+shape = SubResource("RectangleShape2D_cw6oh")
