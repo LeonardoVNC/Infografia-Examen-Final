@@ -19,6 +19,7 @@ var state = states.BOTTOM
 var actual_option = 0
 var options = []
 var actual_upper_option=0
+var able_options = 0
 var upper_options = []
 
 signal fight
@@ -50,6 +51,7 @@ func _set_new_turn():
 	_set_bottom()
 	actual_option = 0
 	actual_upper_option = 0
+	able_options = 0
 	options[0].set_selected()
 	
 func _set_bottom():
@@ -63,6 +65,7 @@ func _set_upper():
 	Description.hide()
 
 func show_upper():
+	upper_options[0].select_option()
 	for i in range(6):
 		upper_options[i].able()
 
@@ -77,24 +80,59 @@ func set_upper_options(texts: Array[String]):
 	if (texts.size() >= 6):
 		print("Deberían introducirse solo 6 opciones loco")
 		return
-	
+	able_options = 0
 	for i in range(6):
 		if (i < texts.size()):
 			upper_options[i].set_text("* " + texts[i])
+			able_options+=1
 		else:
 			upper_options[i].disable()
 
+
 func option_left():
-	if (actual_option <= 0): return
-	options[actual_option].set_unselected()
-	actual_option-=1
-	options[actual_option].set_selected()
+	match state:
+		states.BOTTOM:
+			if (actual_option <= 0): return
+			options[actual_option].set_unselected()
+			actual_option-=1
+			options[actual_option].set_selected()
+		states.UPPER:
+			if (actual_upper_option <= 0): return
+			upper_options[actual_upper_option].unselect_option()
+			actual_upper_option-=1
+			upper_options[actual_upper_option].select_option()
 
 func option_right():
-	if (actual_option >= options.size()-1): return
-	options[actual_option].set_unselected()
-	actual_option+=1
-	options[actual_option].set_selected()
+	match state:
+		states.BOTTOM:
+			if (actual_option >= options.size()-1): return
+			options[actual_option].set_unselected()
+			actual_option+=1
+			options[actual_option].set_selected()
+		states.UPPER:
+			if (actual_upper_option >= able_options-1): return
+			upper_options[actual_upper_option].unselect_option()
+			actual_upper_option+=1
+			upper_options[actual_upper_option].select_option()
+			
+	
+func option_up():
+	match state:
+		states.UPPER:
+			var temp_option = actual_upper_option-2
+			if (temp_option < 0): temp_option = 0
+			upper_options[actual_upper_option].unselect_option()
+			actual_upper_option = temp_option
+			upper_options[actual_upper_option].select_option()
+	
+func option_down():
+	match state:
+		states.UPPER:
+			var temp_option = actual_upper_option+2
+			if (temp_option >= able_options): temp_option = able_options-1
+			upper_options[actual_upper_option].unselect_option()
+			actual_upper_option = temp_option
+			upper_options[actual_upper_option].select_option()
 
 func execute_option():
 	match state:
@@ -142,4 +180,5 @@ func mercy_upper_option():
 
 func go_back():
 	_set_bottom()
+	upper_options[actual_upper_option].unselect_option()
 	actual_upper_option = 0

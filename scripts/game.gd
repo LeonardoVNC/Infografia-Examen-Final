@@ -48,6 +48,7 @@ func player_turn_state():
 	if (can_change_option):
 		var input_vector = Vector2.ZERO
 		input_vector.x = Input.get_axis("ui_left", "ui_right")
+		input_vector.y = Input.get_axis("ui_up", "ui_down")
 		input_vector = input_vector.normalized()
 		
 		OptionTimer.start(0.12)
@@ -55,8 +56,12 @@ func player_turn_state():
 		if input_vector != Vector2.ZERO:
 			if input_vector.x == -1:
 				_option_left()
-			else:
+			elif input_vector.x == 1:
 				_option_right()
+			elif input_vector.y == -1:
+				_option_up()
+			else:
+				_option_down()
 	
 func attack_state():
 	print("Aun nos falta la preparación dx")
@@ -64,13 +69,18 @@ func attack_state():
 func dialogue_state():
 	print("Aun nos falta la preparación dx")
 
-
 func _option_left():
 	FightOptions.option_left()
 
 func _option_right():
 	FightOptions.option_right()
 	
+func _option_down():
+	FightOptions.option_down()
+
+func _option_up():
+	FightOptions.option_up()
+
 func _on_option_fight():
 	print("El jugador golpea aaaa")
 	
