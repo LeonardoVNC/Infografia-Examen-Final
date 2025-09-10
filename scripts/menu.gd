@@ -43,6 +43,7 @@ func _execute_option():
 	match actual_option:
 		0:
 			print("vamo juga")
+			get_tree().change_scene_to_file("res://scenes/game.tscn")
 		1:
 			print("nos vimos")
 			get_tree().quit()

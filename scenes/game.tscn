@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://5y460unwv8l7"]
+[gd_scene load_steps=3 format=3 uid="uid://5y460unwv8l7"]
+
+[ext_resource type="Texture2D" uid="uid://d31l6y55f4yl6" path="res://assets/background.png" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://birfv6m0k36kn" path="res://scenes/player.tscn" id="2_lnu2h"]
 
 [node name="Game" type="TextureRect"]
+texture = ExtResource("1_yqjtg")
+
+[node name="Soul" parent="." instance=ExtResource("2_lnu2h")]
+position = Vector2(323, 318)
