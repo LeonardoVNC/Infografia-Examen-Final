@@ -24,3 +24,7 @@ position = Vector2(320, 320)
 
 [node name="Scenario" parent="." instance=ExtResource("3_lnu2h")]
 position = Vector2(320, 320)
+
+[node name="OptionTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="OptionTimer" to="." method="_on_option_timer_timeout"]

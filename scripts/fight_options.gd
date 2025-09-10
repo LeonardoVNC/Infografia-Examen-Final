@@ -45,16 +45,12 @@ func option_right():
 func execute_option():
 	match actual_option:
 		0:
-			print("Ataqueeen")
 			fight.emit()
 		1:
-			print("Actueeeen")
 			act.emit()
 		2: 
-			print("Estan mejor crudooos")
 			#Aqui el propio jugador debería recuperar su vida supongo, no hay pq mandar lógica a game asdfl
+			# Aunque quizá resulte necesario borrar el item de recuperación fuera... ahi lo vemos alsñdknf
 			item.emit()
 		3:
-			print("*no hace nada*")
 			mercy.emit()
-	
