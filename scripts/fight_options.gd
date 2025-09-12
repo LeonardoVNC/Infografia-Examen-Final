@@ -4,6 +4,7 @@ extends Control
 @onready var Act = $VBox/BottomOptions/ActOption
 @onready var Item = $VBox/BottomOptions/ItemOption
 @onready var Mercy = $VBox/BottomOptions/MercyOption
+@onready var SoulUI = $VBox/Soul_Ui
 @onready var Description = $VBox/UpperOptions/Description
 @onready var UpperOptions = $VBox/UpperOptions
 @onready var Option1 = $VBox/UpperOptions/Option1
@@ -179,6 +180,11 @@ func mercy_upper_option():
 
 func set_items(item_list: Array[String]):
 	items = item_list
+
+func update_hp(new_hp: int):
+	if (new_hp < 0): 
+		new_hp = 0
+	SoulUI.update_hp(new_hp)
 
 func go_back():
 	_set_bottom()

@@ -87,6 +87,7 @@ func _option_down():
 func _option_up():
 	FightOptions.option_up()
 
+var hpwiwi = 92
 func _on_option_fight():
 	print("El jugador golpea aaaa")
 	
