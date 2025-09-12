@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3lfauj5finik"]
+[gd_scene load_steps=8 format=3 uid="uid://b3lfauj5finik"]
 
 [ext_resource type="Script" uid="uid://cwgiy121lvt74" path="res://scripts/fight_options.gd" id="1_2dddj"]
 [ext_resource type="PackedScene" uid="uid://cmlyjfrdq75xa" path="res://scenes/InFightOption.tscn" id="1_qsb8j"]
 [ext_resource type="Texture2D" uid="uid://cmqtff3vxiki3" path="res://assets/Menu.png" id="2_dgfc8"]
 [ext_resource type="PackedScene" uid="uid://cxlh6y68jpxht" path="res://scenes/Option.tscn" id="3_ceokx"]
 [ext_resource type="FontFile" uid="uid://bprgjnaa7xvtv" path="res://assets/fonts/custom/fnt_maintext.ttf" id="3_layea"]
+[ext_resource type="PackedScene" uid="uid://dqr7h0l8ptwg2" path="res://scenes/SoulUI.tscn" id="5_mbje4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mbje4"]
 font = ExtResource("3_layea")
@@ -84,6 +85,9 @@ offset_left = 320.0
 offset_top = 107.0
 offset_right = -144.0
 offset_bottom = -12.0
+
+[node name="Soul_Ui" parent="VBox" instance=ExtResource("5_mbje4")]
+layout_mode = 2
 
 [node name="BottomOptions" type="HBoxContainer" parent="VBox"]
 layout_mode = 2

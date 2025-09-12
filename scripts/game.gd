@@ -1,6 +1,6 @@
 extends TextureRect
 
-@onready var Player = $Player
+@onready var Player = $Soul
 @onready var FightOptions = $FightOptions
 @onready var Scenario = $Scenario
 @onready var OptionTimer = $OptionTimer
@@ -36,8 +36,12 @@ func preparation_state():
 		FightOptions.show()
 		#TODO - De hecho toda esta etapa es... rara... pasamos de dialogo a ataque a dialogo a turno
 		# piensalo mejor, pero, más adelante, de momento esto safa dx
-		state = states.PLAYER_TURN
-	
+		_set_player_turn_state()
+
+func _set_player_turn_state():
+	Player.disable()
+	state = states.PLAYER_TURN
+
 func player_turn_state():
 	if Input.is_action_just_pressed("Action"):
 		FightOptions.execute_option()

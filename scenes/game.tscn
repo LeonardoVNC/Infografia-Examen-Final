@@ -10,20 +10,20 @@
 texture = ExtResource("1_yqjtg")
 script = ExtResource("2_iywne")
 metadata/_edit_vertical_guides_ = [320.0, 40.0, 600.0]
-metadata/_edit_horizontal_guides_ = [400.0, 240.0, 320.0]
+metadata/_edit_horizontal_guides_ = [375.0, 215.0, 295.0]
 
 [node name="FightOptions" parent="." instance=ExtResource("4_lbhrr")]
 layout_mode = 1
 offset_left = 38.0
-offset_top = 240.0
+offset_top = 215.0
 offset_right = -38.0
-offset_bottom = -174.0
+offset_bottom = -199.0
 
 [node name="Soul" parent="." instance=ExtResource("2_lnu2h")]
-position = Vector2(320, 320)
+position = Vector2(320, 295)
 
 [node name="Scenario" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(320, 320)
+position = Vector2(320, 295)
 
 [node name="OptionTimer" type="Timer" parent="."]
 
