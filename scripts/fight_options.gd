@@ -14,11 +14,13 @@ var actual_option = 0
 var options = []
 var items = []
 var hasAttacked = false
+var isActing = false
 var fight_options: Array[String] = ["Sans"]
 var act_options: Array[String] = ["Observar"]
 var mercy_options: Array[String] = ["Perdonar"]
 
 signal item(item_name)
+signal readyToClose
 
 const SPRITES = {
 	"fight" : "res://assets/Fight.png",
@@ -44,6 +46,7 @@ func _prepare_bottom_options():
 
 func _set_new_turn():
 	actual_option = 0
+	isActing = false
 	options[0].set_selected()
 	
 func set_items(item_list: Array[String]):
@@ -96,10 +99,12 @@ func execute_option():
 			UpperBox.execute_option()
 
 func go_back():
-	set_bottom()
+	if (!isActing):
+		set_bottom()
 
 # Funciones de selección de opciones - UpperBox
 func _on_upper_box_option_selected(option: Variant) -> void:
+	isActing = true
 	match actual_option:
 		0:
 			_fight_selected(option)
@@ -135,10 +140,12 @@ func _item_selected(option: int):
 
 func _mercy_selected(option: int):
 	if (option == 0):
-		print("Pasar directo a cerrar ventana")
+		readyToClose.emit()
 	else:
 		print("Algo raro está pasando con la selección de opciones - mercy")
 	
+func _on_upper_box_action_finished() -> void:
+	readyToClose.emit()
 
 # Funciones de selección de opciones - BottomOptions
 func execute_bottom_option():

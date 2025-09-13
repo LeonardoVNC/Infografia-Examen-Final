@@ -27,4 +27,5 @@ position = Vector2(320, 295)
 
 [node name="OptionTimer" type="Timer" parent="."]
 
+[connection signal="readyToClose" from="FightUI" to="." method="_on_fight_ui_ready_to_close"]
 [connection signal="timeout" from="OptionTimer" to="." method="_on_option_timer_timeout"]

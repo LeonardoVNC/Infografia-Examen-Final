@@ -26,6 +26,7 @@ func _physics_process(delta: float) -> void:
 		states.DIALOGUE:
 			dialogue_state()
 
+# Funciones para el primer turno
 func preparation_state():
 	#TODO - Pensar si aqui ponemos los primeros dialogos igual o q onda
 	if Input.is_action_just_pressed("Action"):
@@ -35,6 +36,7 @@ func preparation_state():
 		# piensalo mejor, pero, más adelante, de momento esto safa dx
 		_set_player_turn_state()
 
+# Funciones para el turno del jugador
 func _set_player_turn_state():
 	Player.disable()
 	state = states.PLAYER_TURN
@@ -65,12 +67,6 @@ func player_turn_state():
 				_option_up()
 			else:
 				_option_down()
-	
-func attack_state():
-	print("Aun nos falta la preparación dx")
-	
-func dialogue_state():
-	print("Aun nos falta la preparación dx")
 
 func _option_left():
 	FightOptions.option_left()
@@ -84,18 +80,27 @@ func _option_down():
 func _option_up():
 	FightOptions.option_up()
 
-func _on_option_fight():
-	#TODO
-	print("Mostrar pantalla de ataque")
-	
-func _on_option_act():
-	print("El jugador debe actuar wiii")
-	
+func _on_option_timer_timeout() -> void:
+	can_change_option = true
+
 func _on_option_item(item_name):
 	print("el jugador debe comer alguito:", item_name)
 
-func _on_option_mercy():
-	print("el jugador perdona")
+func _on_fight_ui_ready_to_close() -> void:
+	print("Cerrando ventana")
+	#TODO - Tratar de hacerlo animado
+	FightOptions.hide()
+	#TODO - Mostrar el Scenario
+	_set_attack_state()
 
-func _on_option_timer_timeout() -> void:
-	can_change_option = true
+# Funciones para el turno del esqueleto ketchup
+func _set_attack_state():
+	Player.able()
+	state = states.ATTACK
+
+func attack_state():
+	print("Aun nos falta la preparación dx")
+
+# Funciones para cuando habla el esqueleto ketchup
+func dialogue_state():
+	print("Aun nos falta la preparación dx")

@@ -44,4 +44,5 @@ layout_mode = 2
 [node name="MercyOption" parent="VBox/BottomOptions" instance=ExtResource("1_qsb8j")]
 layout_mode = 2
 
+[connection signal="actionFinished" from="VBox/UpperBox" to="." method="_on_upper_box_action_finished"]
 [connection signal="optionSelected" from="VBox/UpperBox" to="." method="_on_upper_box_option_selected"]
