@@ -1,33 +1,24 @@
 extends Control
 
+@onready var UpperBox = $VBox/UpperBox
+@onready var SoulUI = $VBox/SoulUI
 @onready var Fight = $VBox/BottomOptions/FightOption
 @onready var Act = $VBox/BottomOptions/ActOption
 @onready var Item = $VBox/BottomOptions/ItemOption
 @onready var Mercy = $VBox/BottomOptions/MercyOption
-@onready var SoulUI = $VBox/Soul_Ui
-@onready var Description = $VBox/UpperOptions/Description
-@onready var UpperOptions = $VBox/UpperOptions
-@onready var Option1 = $VBox/UpperOptions/Option1
-@onready var Option2 = $VBox/UpperOptions/Option2
-@onready var Option3 = $VBox/UpperOptions/Option3
-@onready var Option4 = $VBox/UpperOptions/Option4
-@onready var Option5 = $VBox/UpperOptions/Option5
-@onready var Option6 = $VBox/UpperOptions/Option6
 
 enum states {BOTTOM, UPPER}
 var state = states.BOTTOM
 
 var actual_option = 0
 var options = []
-var actual_upper_option=0
-var able_options = 0
-var upper_options = []
 var items = []
+var hasAttacked = false
+var fight_options: Array[String] = ["Sans"]
+var act_options: Array[String] = ["Observar"]
+var mercy_options: Array[String] = ["Perdonar"]
 
-signal fight
-signal act
 signal item(item_name)
-signal mercy
 
 const SPRITES = {
 	"fight" : "res://assets/Fight.png",
@@ -37,6 +28,10 @@ const SPRITES = {
 }
 
 func _ready() -> void:
+	_prepare_bottom_options()
+	_set_new_turn()
+	
+func _prepare_bottom_options():
 	Fight.set_text("fight")
 	Fight.set_icon(SPRITES.fight)
 	Act.set_text("act")
@@ -46,51 +41,23 @@ func _ready() -> void:
 	Mercy.set_text("mercy")
 	Mercy.set_icon(SPRITES.mercy)
 	options = [Fight, Act, Item, Mercy]
-	upper_options = [Option1, Option2, Option3, Option4, Option5, Option6]
-	_set_new_turn()
-	
+
 func _set_new_turn():
-	_set_bottom()
 	actual_option = 0
-	actual_upper_option = 0
-	able_options = 0
 	options[0].set_selected()
 	
-func _set_bottom():
+func set_items(item_list: Array[String]):
+	items = item_list
+
+func set_bottom():
 	state = states.BOTTOM
-	hide_upper()
-	Description.show()
+	UpperBox.show_description()
 
-func _set_upper():
+func set_options():
 	state = states.UPPER
-	show_upper()
-	Description.hide()
+	UpperBox.show_options()
 
-func show_upper():
-	upper_options[0].select_option()
-	for i in range(6):
-		upper_options[i].able()
-
-func hide_upper():
-	for i in range(6):
-		upper_options[i].disable()
-
-func set_description(text: String):
-	Description.text = "* " + text
-
-func set_upper_options(texts: Array[String]):
-	if (texts.size() >= 6):
-		print("Deberían introducirse solo 6 opciones loco")
-		return
-	able_options = 0
-	for i in range(6):
-		if (i < texts.size()):
-			upper_options[i].set_text("* " + texts[i])
-			able_options+=1
-		else:
-			upper_options[i].disable()
-
-
+# Funciones de navegación
 func option_left():
 	match state:
 		states.BOTTOM:
@@ -99,10 +66,7 @@ func option_left():
 			actual_option-=1
 			options[actual_option].set_selected()
 		states.UPPER:
-			if (actual_upper_option <= 0): return
-			upper_options[actual_upper_option].unselect_option()
-			actual_upper_option-=1
-			upper_options[actual_upper_option].select_option()
+			UpperBox.option_left()
 
 func option_right():
 	match state:
@@ -112,81 +76,79 @@ func option_right():
 			actual_option+=1
 			options[actual_option].set_selected()
 		states.UPPER:
-			if (actual_upper_option >= able_options-1): return
-			upper_options[actual_upper_option].unselect_option()
-			actual_upper_option+=1
-			upper_options[actual_upper_option].select_option()
-			
-	
+			UpperBox.option_right()
+
 func option_up():
 	match state:
 		states.UPPER:
-			var temp_option = actual_upper_option-2
-			if (temp_option < 0): temp_option = 0
-			upper_options[actual_upper_option].unselect_option()
-			actual_upper_option = temp_option
-			upper_options[actual_upper_option].select_option()
-	
+			UpperBox.option_up()
+
 func option_down():
 	match state:
 		states.UPPER:
-			var temp_option = actual_upper_option+2
-			if (temp_option >= able_options): temp_option = able_options-1
-			upper_options[actual_upper_option].unselect_option()
-			actual_upper_option = temp_option
-			upper_options[actual_upper_option].select_option()
+			UpperBox.option_down()
 
 func execute_option():
 	match state:
 		states.BOTTOM:
 			execute_bottom_option()
 		states.UPPER:
-			execute_upper_option()
-	
-func execute_bottom_option():
-	_set_upper()
-	match actual_option:
-		0:
-			set_upper_options(["Sans"])
-		1:
-			set_upper_options(["Observar"])
-		2: 
-			set_upper_options(items)
-		3:
-			set_upper_options(["Perdonar"])
-		
-func execute_upper_option():
-	match actual_option:
-		0:
-			fight_upper_option()
-		1: 
-			act_upper_option()
-		2:
-			item_upper_option()
-		3:
-			mercy_upper_option()
-
-func fight_upper_option():
-	fight.emit()
-	
-func act_upper_option():
-	act.emit()
-	
-func item_upper_option():
-	item.emit(items[actual_upper_option])
-	
-func mercy_upper_option():
-	mercy.emit()
-
-func set_items(item_list: Array[String]):
-	items = item_list
-
-func update_hp(new_hp: int):
-	if (new_hp < 0): 
-		new_hp = 0
-	SoulUI.update_hp(new_hp)
+			UpperBox.execute_option()
 
 func go_back():
-	_set_bottom()
-	upper_options[actual_upper_option].unselect_option()
-	actual_upper_option = 0
+	set_bottom()
+
+# Funciones de selección de opciones - UpperBox
+func _on_upper_box_option_selected(option: Variant) -> void:
+	match actual_option:
+		0:
+			_fight_selected(option)
+		1:
+			_act_selected(option)
+		2:
+			_item_selected(option)
+		3:
+			_mercy_selected(option)
+
+func _fight_selected(option: int):
+	if (option == 0):
+		hasAttacked = true
+		UpperBox.show_fight_bar()
+		UpperBox.start_attack()
+	else:
+		print("Algo raro está pasando con la selección de opciones - attack")
+
+func _act_selected(option: int):
+	if (option == 0):
+		var text
+		if (hasAttacked):
+			text = "No puede seguir esquivando por siempre. Sigue atacando."
+		else:
+			text = "SANS 1 ATK 1 DEF\n* El enemigo más fácil.\n* Solo puede provocar 1 de daño."
+		UpperBox.set_description(text)
+		UpperBox.show_description()
+	else:
+		print("Algo raro está pasando con la selección de opciones - act")
+
+func _item_selected(option: int):
+	item.emit(items[option])
+
+func _mercy_selected(option: int):
+	if (option == 0):
+		print("Pasar directo a cerrar ventana")
+	else:
+		print("Algo raro está pasando con la selección de opciones - mercy")
+	
+
+# Funciones de selección de opciones - BottomOptions
+func execute_bottom_option():
+	match actual_option:
+		0:
+			UpperBox.set_options(fight_options)
+		1:
+			UpperBox.set_options(act_options)
+		2: 
+			UpperBox.set_options(items)
+		3:
+			UpperBox.set_options(mercy_options)
+	set_options()

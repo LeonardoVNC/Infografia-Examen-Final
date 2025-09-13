@@ -1,0 +1,95 @@
+[gd_scene load_steps=9 format=3 uid="uid://dj0ucjvx6se0y"]
+
+[ext_resource type="Texture2D" uid="uid://cmqtff3vxiki3" path="res://assets/Menu.png" id="1_2namg"]
+[ext_resource type="FontFile" uid="uid://bprgjnaa7xvtv" path="res://assets/fonts/custom/fnt_maintext.ttf" id="2_mx253"]
+[ext_resource type="Script" uid="uid://dikxi8rk6ncba" path="res://scripts/upper_box.gd" id="2_ooyxi"]
+[ext_resource type="PackedScene" uid="uid://cxlh6y68jpxht" path="res://scenes/Option.tscn" id="3_ooyxi"]
+[ext_resource type="Texture2D" uid="uid://ct77l5gn52qtr" path="res://assets/FightBar.png" id="4_kvjcy"]
+[ext_resource type="Script" uid="uid://drepblt4esa58" path="res://scripts/fight_bar.gd" id="5_yfnpn"]
+[ext_resource type="Texture2D" uid="uid://k04bjhhon8wq" path="res://assets/DamageIndicator.png" id="6_ul5ik"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x2riw"]
+font = ExtResource("2_mx253")
+font_size = 22
+
+[node name="UpperBox" type="TextureRect"]
+texture = ExtResource("1_2namg")
+script = ExtResource("2_ooyxi")
+
+[node name="Description" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 38.0
+offset_top = 23.0
+offset_right = 533.0
+offset_bottom = 99.0
+text = "* Texto medianamente largo pero puramente de ejemplo muchachos"
+label_settings = SubResource("LabelSettings_x2riw")
+autowrap_mode = 3
+
+[node name="Options" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 560.0
+offset_bottom = 160.0
+
+[node name="Option1" parent="Options" instance=ExtResource("3_ooyxi")]
+layout_mode = 1
+offset_left = 38.0
+offset_top = 27.0
+offset_right = -2.0
+offset_bottom = -13.0
+
+[node name="Option2" parent="Options" instance=ExtResource("3_ooyxi")]
+layout_mode = 1
+offset_left = 320.0
+offset_top = 27.0
+offset_right = 320.0
+offset_bottom = 27.0
+
+[node name="Option3" parent="Options" instance=ExtResource("3_ooyxi")]
+layout_mode = 1
+offset_left = 38.0
+offset_top = 67.0
+offset_right = -2.0
+offset_bottom = 27.0
+
+[node name="Option4" parent="Options" instance=ExtResource("3_ooyxi")]
+layout_mode = 1
+offset_left = 320.0
+offset_top = 67.0
+offset_right = 280.0
+offset_bottom = 27.0
+
+[node name="Option5" parent="Options" instance=ExtResource("3_ooyxi")]
+layout_mode = 1
+offset_left = 38.0
+offset_top = 107.0
+offset_right = -2.0
+offset_bottom = 67.0
+
+[node name="Option6" parent="Options" instance=ExtResource("3_ooyxi")]
+layout_mode = 1
+offset_left = 320.0
+offset_top = 107.0
+offset_right = 280.0
+offset_bottom = 67.0
+
+[node name="FightBar" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 3.0
+offset_top = 20.0
+offset_right = 562.0
+offset_bottom = 141.0
+texture = ExtResource("4_kvjcy")
+script = ExtResource("5_yfnpn")
+
+[node name="DamageIndicator" type="Sprite2D" parent="FightBar"]
+position = Vector2(10, 60)
+texture = ExtResource("6_ul5ik")
+
+[node name="IndicatorTimer" type="Timer" parent="FightBar"]
+
+[connection signal="timeout" from="FightBar" to="." method="_on_fight_bar_timeout"]
+[connection signal="timeout" from="FightBar/IndicatorTimer" to="FightBar" method="_on_indicator_timer_timeout"]

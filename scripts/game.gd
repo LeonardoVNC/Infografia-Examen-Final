@@ -1,7 +1,7 @@
 extends TextureRect
 
 @onready var Player = $Soul
-@onready var FightOptions = $FightOptions
+@onready var FightOptions = $FightUI
 @onready var Scenario = $Scenario
 @onready var OptionTimer = $OptionTimer
 
@@ -12,10 +12,7 @@ var items: Array[String] = ["Fideos", "Pie", "Héroe Leg.", "Héroe Leg.", "Hér
 
 func _ready() -> void:
 	FightOptions.hide()
-	FightOptions.fight.connect(_on_option_fight)
-	FightOptions.act.connect(_on_option_act)
 	FightOptions.item.connect(_on_option_item)
-	FightOptions.mercy.connect(_on_option_mercy)
 	FightOptions.set_items(items)
 
 func _physics_process(delta: float) -> void:
@@ -87,9 +84,9 @@ func _option_down():
 func _option_up():
 	FightOptions.option_up()
 
-var hpwiwi = 92
 func _on_option_fight():
-	print("El jugador golpea aaaa")
+	#TODO
+	print("Mostrar pantalla de ataque")
 	
 func _on_option_act():
 	print("El jugador debe actuar wiii")
