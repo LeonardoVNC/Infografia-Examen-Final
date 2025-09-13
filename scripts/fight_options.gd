@@ -6,8 +6,9 @@ extends Control
 @onready var Act = $VBox/BottomOptions/ActOption
 @onready var Item = $VBox/BottomOptions/ItemOption
 @onready var Mercy = $VBox/BottomOptions/MercyOption
+@onready var AudioPlayer = $UIAudioPlayer
 
-enum states {BOTTOM, UPPER}
+enum states {BOTTOM, UPPER, IDLE}
 var state = states.BOTTOM
 
 var actual_option = 0
@@ -55,10 +56,17 @@ func set_items(item_list: Array[String]):
 func set_bottom():
 	state = states.BOTTOM
 	UpperBox.show_description()
+	UpperBox.modulate = Color(1,1,1,1)
 
 func set_options():
 	state = states.UPPER
 	UpperBox.show_options()
+	UpperBox.modulate = Color(1,1,1,1)
+
+func set_sans_attack():
+	state = states.IDLE
+	UpperBox.modulate = Color(0,0,0,0)
+	options[actual_option].set_unselected()
 
 # Funciones de navegación
 func option_left():
@@ -99,11 +107,13 @@ func execute_option():
 			UpperBox.execute_option()
 
 func go_back():
-	if (!isActing):
+	if (!isActing && state != states.BOTTOM):
+		audio_select()
 		set_bottom()
 
 # Funciones de selección de opciones - UpperBox
 func _on_upper_box_option_selected(option: Variant) -> void:
+	audio_select()
 	isActing = true
 	match actual_option:
 		0:
@@ -149,6 +159,7 @@ func _on_upper_box_action_finished() -> void:
 
 # Funciones de selección de opciones - BottomOptions
 func execute_bottom_option():
+	audio_select()
 	match actual_option:
 		0:
 			UpperBox.set_options(fight_options)
@@ -159,3 +170,7 @@ func execute_bottom_option():
 		3:
 			UpperBox.set_options(mercy_options)
 	set_options()
+
+# Audio
+func audio_select():
+	AudioPlayer.play_select()

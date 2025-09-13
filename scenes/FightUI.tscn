@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3lfauj5finik"]
+[gd_scene load_steps=6 format=3 uid="uid://b3lfauj5finik"]
 
 [ext_resource type="Script" uid="uid://cwgiy121lvt74" path="res://scripts/fight_options.gd" id="1_2dddj"]
 [ext_resource type="PackedScene" uid="uid://cmlyjfrdq75xa" path="res://scenes/InFightOption.tscn" id="1_qsb8j"]
 [ext_resource type="PackedScene" uid="uid://dj0ucjvx6se0y" path="res://scenes/UpperBox.tscn" id="2_od04m"]
+[ext_resource type="Script" uid="uid://cs0rhged8lxi7" path="res://scripts/ui_audio_player.gd" id="5_6g522"]
 [ext_resource type="PackedScene" uid="uid://dqr7h0l8ptwg2" path="res://scenes/SoulUI.tscn" id="5_mbje4"]
 
 [node name="FightUI" type="Control"]
@@ -43,6 +44,9 @@ layout_mode = 2
 
 [node name="MercyOption" parent="VBox/BottomOptions" instance=ExtResource("1_qsb8j")]
 layout_mode = 2
+
+[node name="UIAudioPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("5_6g522")
 
 [connection signal="actionFinished" from="VBox/UpperBox" to="." method="_on_upper_box_action_finished"]
 [connection signal="optionSelected" from="VBox/UpperBox" to="." method="_on_upper_box_option_selected"]

@@ -4,15 +4,23 @@ extends TextureRect
 @onready var FightOptions = $FightUI
 @onready var Scenario = $Scenario
 @onready var OptionTimer = $OptionTimer
+@onready var AnimTimer = $AnimTimer
+@onready var AnimTree = $AnimationTree
+@onready var AnimStates = $AnimationTree.get("parameters/playback")
+@onready var UpperBox = $FightUI/VBox/UpperBox
+@onready var BackAudio = $BackgroundAudioPlayer
 
 enum states {PREPARATION, PLAYER_TURN, ATTACK, DIALOGUE}
+enum animStates {REST, KNIFE, MISS, DMG}
 var state = states.PREPARATION
+var animState = animStates.REST
 var can_change_option = true
 var items: Array[String] = ["Fideos", "Pie", "Héroe Leg.", "Héroe Leg.", "Héroe Leg."]
 
 func _ready() -> void:
 	FightOptions.hide()
 	FightOptions.item.connect(_on_option_item)
+	UpperBox.inputAttack.connect(_on_attack_ready)
 	FightOptions.set_items(items)
 
 func _physics_process(delta: float) -> void:
@@ -35,6 +43,7 @@ func preparation_state():
 		#TODO - De hecho toda esta etapa es... rara... pasamos de dialogo a ataque a dialogo a turno
 		# piensalo mejor, pero, más adelante, de momento esto safa dx
 		_set_player_turn_state()
+		BackAudio.play()
 
 # Funciones para el turno del jugador
 func _set_player_turn_state():
@@ -86,10 +95,25 @@ func _on_option_timer_timeout() -> void:
 func _on_option_item(item_name):
 	print("el jugador debe comer alguito:", item_name)
 
+func _on_attack_ready():
+	AnimStates.travel("KnifeAttack")
+	animState = animStates.KNIFE
+	#TODO - tambien hay q decirle al esqueleto loco q se mueva pa ete lao
+	AnimTimer.start(0.6)
+
+func _on_anim_timer_timeout() -> void:
+	match animState:
+		animStates.KNIFE:
+			#TODO - hay que diferenciar entre los primeros turnos y el final
+			AnimStates.travel("Miss")
+			animState = animStates.MISS
+			AnimTimer.start(1.8)
+		animStates.MISS:
+			_on_fight_ui_ready_to_close()
+	
 func _on_fight_ui_ready_to_close() -> void:
-	print("Cerrando ventana")
-	#TODO - Tratar de hacerlo animado
-	FightOptions.hide()
+	FightOptions.set_sans_attack()
+	
 	#TODO - Mostrar el Scenario
 	_set_attack_state()
 

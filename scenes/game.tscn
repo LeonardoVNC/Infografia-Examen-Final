@@ -1,10 +1,325 @@
-[gd_scene load_steps=6 format=3 uid="uid://5y460unwv8l7"]
+[gd_scene load_steps=28 format=3 uid="uid://5y460unwv8l7"]
 
 [ext_resource type="Texture2D" uid="uid://d31l6y55f4yl6" path="res://assets/background.png" id="1_s0nni"]
 [ext_resource type="Script" uid="uid://bmhkl6wgjhiye" path="res://scripts/game.gd" id="2_aug50"]
 [ext_resource type="PackedScene" uid="uid://b3lfauj5finik" path="res://scenes/FightUI.tscn" id="3_kiw3p"]
 [ext_resource type="PackedScene" uid="uid://birfv6m0k36kn" path="res://scenes/player.tscn" id="4_400sg"]
 [ext_resource type="PackedScene" uid="uid://x1gjxuymob11" path="res://scenes/Scenario.tscn" id="5_g4kob"]
+[ext_resource type="Texture2D" uid="uid://c80sgr4cyxwtw" path="res://assets/KnifeSprites.png" id="6_kiw3p"]
+[ext_resource type="Texture2D" uid="uid://heqlejip4mag" path="res://assets/Miss.png" id="7_400sg"]
+[ext_resource type="AudioStream" uid="uid://bg54dimw8ik2n" path="res://assets/sounds/slash.wav" id="7_g4kob"]
+[ext_resource type="Texture2D" uid="uid://n228pie1bpxp" path="res://assets/999.png" id="8_400sg"]
+[ext_resource type="AudioStream" uid="uid://ctr36rtnkf5vk" path="res://assets/sounds/snd_damage_c.wav" id="10_qy1jj"]
+[ext_resource type="AudioStream" uid="uid://dqgavsq2ylatb" path="res://assets/sounds/Undertale - Megalovania(MP3_128K).mp3" id="11_3xj3m"]
+
+[sub_resource type="Animation" id="Animation_s0nni"]
+resource_name = "KnifeAttack"
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FightEffects:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_kiw3p")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FightEffects:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FightEffects:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FightEffects:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EffectAudioPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_g4kob")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
+
+[sub_resource type="Animation" id="Animation_aug50"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FightEffects:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FightEffects:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FightEffects:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FightEffects:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FightEffects:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 115)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FightEffects:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_g4kob"]
+resource_name = "Miss"
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FightEffects:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_400sg")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FightEffects:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FightEffects:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 115), Vector2(320, 105), Vector2(320, 95), Vector2(320, 85), Vector2(320, 80)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FightEffects:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qy1jj"]
+resource_name = "Jackpot"
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FightEffects:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_400sg")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FightEffects:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FightEffects:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(320, 115), Vector2(320, 90)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FightEffects:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EffectAudioPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_qy1jj")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kiw3p"]
+_data = {
+&"Jackpot": SubResource("Animation_qy1jj"),
+&"KnifeAttack": SubResource("Animation_s0nni"),
+&"Miss": SubResource("Animation_g4kob"),
+&"RESET": SubResource("Animation_aug50")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3xj3m"]
+animation = &"Jackpot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mcffj"]
+animation = &"KnifeAttack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2rd6h"]
+animation = &"Miss"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7ua8r"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r7sob"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y5y3l"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vjgi4"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kyk2p"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_45i86"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sv1m6"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_a8wo8"]
+states/Jackpot/node = SubResource("AnimationNodeAnimation_3xj3m")
+states/Jackpot/position = Vector2(669, 166)
+states/KnifeAttack/node = SubResource("AnimationNodeAnimation_mcffj")
+states/KnifeAttack/position = Vector2(489, 100)
+states/Miss/node = SubResource("AnimationNodeAnimation_2rd6h")
+states/Miss/position = Vector2(669, 35)
+states/RESET/node = SubResource("AnimationNodeAnimation_7ua8r")
+states/RESET/position = Vector2(333, 100)
+transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_r7sob"), "RESET", "KnifeAttack", SubResource("AnimationNodeStateMachineTransition_y5y3l"), "KnifeAttack", "Jackpot", SubResource("AnimationNodeStateMachineTransition_vjgi4"), "KnifeAttack", "Miss", SubResource("AnimationNodeStateMachineTransition_kyk2p"), "Miss", "End", SubResource("AnimationNodeStateMachineTransition_45i86"), "Jackpot", "End", SubResource("AnimationNodeStateMachineTransition_sv1m6")]
 
 [node name="Game" type="TextureRect"]
 texture = ExtResource("1_s0nni")
@@ -23,9 +338,31 @@ offset_bottom = -199.0
 position = Vector2(320, 295)
 
 [node name="Scenario" parent="." instance=ExtResource("5_g4kob")]
+visible = false
 position = Vector2(320, 295)
+
+[node name="FightEffects" type="Sprite2D" parent="."]
+position = Vector2(320, 115)
 
 [node name="OptionTimer" type="Timer" parent="."]
 
+[node name="AnimTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kiw3p")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_a8wo8")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="EffectAudioPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="BackgroundAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_3xj3m")
+
 [connection signal="readyToClose" from="FightUI" to="." method="_on_fight_ui_ready_to_close"]
 [connection signal="timeout" from="OptionTimer" to="." method="_on_option_timer_timeout"]
+[connection signal="timeout" from="AnimTimer" to="." method="_on_anim_timer_timeout"]

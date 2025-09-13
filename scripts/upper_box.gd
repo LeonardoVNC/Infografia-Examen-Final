@@ -17,6 +17,7 @@ var has_selected_option = false
 var is_attacking = false
 
 signal optionSelected(option)
+signal inputAttack()
 signal actionFinished()
 
 func _ready() -> void:
@@ -122,8 +123,7 @@ func start_attack():
 
 func attack():
 	FightBar.attack()
+	inputAttack.emit()
 
 func _on_fight_bar_timeout() -> void:
-	print("UpperBox: Acabado el ataque")
-	print("Action finished emitido, deberia cerrarse ventana")
-	actionFinished.emit()
+	inputAttack.emit()
