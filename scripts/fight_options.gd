@@ -157,6 +157,9 @@ func _mercy_selected(option: int):
 func _on_upper_box_action_finished() -> void:
 	readyToClose.emit()
 
+func _on_upper_box_text_changed() -> void:
+	audio_normal_text()
+
 # Funciones de selección de opciones - BottomOptions
 func execute_bottom_option():
 	audio_select()
@@ -174,3 +177,6 @@ func execute_bottom_option():
 # Audio
 func audio_select():
 	AudioPlayer.play_select()
+
+func audio_normal_text():
+	AudioPlayer.play_normal_text()

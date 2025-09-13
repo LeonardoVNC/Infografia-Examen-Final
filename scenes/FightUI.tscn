@@ -50,3 +50,4 @@ script = ExtResource("5_6g522")
 
 [connection signal="actionFinished" from="VBox/UpperBox" to="." method="_on_upper_box_action_finished"]
 [connection signal="optionSelected" from="VBox/UpperBox" to="." method="_on_upper_box_option_selected"]
+[connection signal="textChanged" from="VBox/UpperBox" to="." method="_on_upper_box_text_changed"]

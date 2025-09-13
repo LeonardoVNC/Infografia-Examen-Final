@@ -91,5 +91,8 @@ texture = ExtResource("6_ul5ik")
 
 [node name="IndicatorTimer" type="Timer" parent="FightBar"]
 
+[node name="UpperTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="FightBar" to="." method="_on_fight_bar_timeout"]
 [connection signal="timeout" from="FightBar/IndicatorTimer" to="FightBar" method="_on_indicator_timer_timeout"]
+[connection signal="timeout" from="UpperTimer" to="." method="_on_upper_timer_timeout"]

@@ -9,16 +9,20 @@ extends TextureRect
 @onready var Option5 = $Options/Option5
 @onready var Option6 = $Options/Option6
 @onready var FightBar = $FightBar
+@onready var UpperTimer = $UpperTimer
 
 var actual_option=0
 var able_options = 0
 var upper_options = []
 var has_selected_option = false
 var is_attacking = false
+var full_text = ""
+var current_index = 0
 
 signal optionSelected(option)
 signal inputAttack()
 signal actionFinished()
+signal textChanged()
 
 func _ready() -> void:
 	upper_options = [Option1, Option2, Option3, Option4, Option5, Option6]
@@ -31,8 +35,19 @@ func show_description():
 	FightBar.hide()
 
 func set_description(text: String):
-	Description.text = "* " + text
+	full_text = "* " + text
+	current_index = 0
+	Description.text = ""
+	UpperTimer.start(0.035)
 
+func _on_upper_timer_timeout() -> void:
+	if current_index < full_text.length():
+		Description.text += full_text[current_index]
+		current_index += 1
+		textChanged.emit()
+	else:
+		UpperTimer.stop()
+	
 # Funciones para nodos Options:
 func show_options():
 	select_first_option()
