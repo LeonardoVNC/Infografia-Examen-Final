@@ -20,7 +20,7 @@ var fight_options: Array[String] = ["Sans"]
 var act_options: Array[String] = ["Observar"]
 var mercy_options: Array[String] = ["Perdonar"]
 
-signal item(item_name)
+signal item(item_index)
 signal readyToClose
 
 const SPRITES = {
@@ -50,11 +50,15 @@ func _set_new_turn(text: String):
 	options[actual_option].set_selected()
 	isActing = false
 	UpperBox._set_new_turn()
-	UpperBox.set_description(text)
+	set_description(text)
 	
 func set_items(item_list: Array[String]):
 	items = item_list
 
+func set_description(text: String):
+	UpperBox.show_description()
+	UpperBox.set_description(text)
+	
 func set_bottom():
 	state = states.BOTTOM
 	UpperBox.show_description()
@@ -148,7 +152,7 @@ func _act_selected(option: int):
 		print("Algo raro está pasando con la selección de opciones - act")
 
 func _item_selected(option: int):
-	item.emit(items[option])
+	item.emit(option)
 
 func _mercy_selected(option: int):
 	if (option == 0):

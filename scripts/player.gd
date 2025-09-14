@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 200
+const MAX_HP = 92
 
 @export var hp = 92
 var hasHurtWindow = false
@@ -21,6 +22,15 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 	
+func recover_hp(rec_hp: int) -> bool:
+	var new_hp = hp + rec_hp
+	if (new_hp >= MAX_HP):
+		hp = MAX_HP
+		return true
+	else:
+		hp = new_hp
+		return false
+
 func able():
 	canMove = true
 	show()

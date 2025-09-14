@@ -51,14 +51,22 @@ func _on_upper_timer_timeout() -> void:
 	
 # Funciones para nodos Options:
 func show_options():
-	select_first_option()
-	actual_option=0
-	Description.hide()
-	Options.show()
-	FightBar.hide()
+	if (able_options > 0):
+		select_first_option()
+		actual_option=0
+		Description.hide()
+		Options.show()
+		FightBar.hide()
+	else:
+		show_description()
+		set_description("No quedan opciones.")
+		return
 	
 func set_options(texts: Array[String]):
-	if (texts.size() >= 6):
+	if (texts.size() == 0):
+		able_options = 0
+		return
+	if (texts.size() > 6):
 		print("Deberían introducirse solo 6 opciones loco")
 		return
 	able_options = 0
@@ -122,7 +130,7 @@ func execute_option():
 		attack()
 		return
 		
-	# Para selección de opciones y tal
+	# Para selección de opciones y tal	
 	if actual_option >= able_options:
 		print("Algo raro está pasando en la selección de opciones")
 		return

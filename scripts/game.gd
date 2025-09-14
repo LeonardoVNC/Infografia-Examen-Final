@@ -16,7 +16,30 @@ var state = states.PREPARATION
 var animState = animStates.REST
 var can_change_option = true
 var turn = 0
-var items: Array[String] = ["Fideos", "Pie", "Héroe Leg.", "Héroe Leg.", "Héroe Leg."]
+
+var items_data = {
+	"Fideos Inst.": {
+		"hp_recover": 90,
+		"message": "Están mejor crudos."
+	},
+	"Tarta": {
+		"hp_recover": 92,
+		"message": "Te comes la tarta."
+	},
+	"Filete": {
+		"hp_recover": 60,
+		"message": "Te comes el Filete con Cara."
+	},
+	"Héroe L.": {
+		"hp_recover": 40,
+		"message": "Te comes el Héroe Legendario."
+	},
+	"Trozo Nieve": {
+		"hp_recover": 45,
+		"message": "Te has comido el Trozo del Muñeco de Nieve."
+	}
+}
+var items: Array[String] = ["Fideos Inst.", "Tarta", "Filete", "Héroe L.", "Trozo Nieve", "Trozo Nieve"]
 
 func _ready() -> void:
 	FightOptions.hide()
@@ -48,7 +71,6 @@ func preparation_state():
 
 # Funciones para el turno del jugador
 func _set_player_turn_state():
-	##TODO Trabajar esta lógica
 	Player.disable()
 	state = states.PLAYER_TURN
 	_set_description_new_turn()
@@ -128,8 +150,30 @@ func _option_up():
 func _on_option_timer_timeout() -> void:
 	can_change_option = true
 
-func _on_option_item(item_name):
-	print("el jugador debe comer alguito:", item_name)
+func _on_option_item(item_index):
+	if item_index < 0 or item_index >= items.size():
+		return
+	var item_name = items[item_index]
+	if not items_data.has(item_name):
+		print("No pusiste este item en tu diccionario muchacho: ", item_name)
+		return
+		
+	var hp_recover = items_data[item_name]["hp_recover"]
+	var message = items_data[item_name]["message"]
+	
+	var isHpFilled = Player.recover_hp(hp_recover)
+	#TODO - Actualizar el UI con la vida igual, mejor si es manejo de señales
+	
+	var text
+	if (isHpFilled):
+		text = "* Tus HP se has rellenado."
+	else:
+		text = "* ¡Has recuperado %d HP!"%hp_recover
+	
+	#FightOptions.set_bottom()
+	FightOptions.set_description("%s\n%s" %[message,text])
+	items.remove_at(item_index)
+	FightOptions.set_items(items)
 
 func _on_attack_ready():
 	turn += 1
