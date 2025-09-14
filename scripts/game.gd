@@ -15,6 +15,7 @@ enum animStates {REST, KNIFE, MISS, DMG}
 var state = states.PREPARATION
 var animState = animStates.REST
 var can_change_option = true
+var turn = 0
 var items: Array[String] = ["Fideos", "Pie", "Héroe Leg.", "Héroe Leg.", "Héroe Leg."]
 
 func _ready() -> void:
@@ -30,7 +31,7 @@ func _physics_process(delta: float) -> void:
 		states.PLAYER_TURN:
 			player_turn_state()
 		states.ATTACK:
-			player_turn_state()
+			attack_state()
 		states.DIALOGUE:
 			dialogue_state()
 
@@ -47,8 +48,43 @@ func preparation_state():
 
 # Funciones para el turno del jugador
 func _set_player_turn_state():
+	##TODO Trabajar esta lógica
 	Player.disable()
 	state = states.PLAYER_TURN
+	_set_description_new_turn()
+	
+func _set_description_new_turn():
+	var text
+	var current_hp = Player.hp
+	if (turn == 0):
+		text = Globals.descriptions_1st[0]
+	elif (turn == 1):
+		text = Globals.descriptions_1st[1]
+	elif (turn == 4):
+		text = Globals.descriptions_1st[2]
+	elif (turn == 9):
+		text = Globals.descriptions_1st[3]
+	elif (turn == 13):
+		text = Globals.descriptions_1st[4]
+	elif (turn == 14):
+		text = Globals.descriptions_2nd[0]
+	elif (turn == 18):
+		text = Globals.descriptions_2nd[2]
+	elif (turn >= 20):
+		text = Globals.descriptions_2nd[3]
+	elif (turn == 23):
+		text = Globals.descriptions_2nd[4]
+	elif (turn > 14):
+		text = Globals.descriptions_2nd[1]
+	elif (current_hp < 20):
+		text = Globals.hp_descriptions[3]
+	elif (current_hp < 35):
+		text = Globals.hp_descriptions[2]
+	elif (current_hp < 50):
+		text = Globals.hp_descriptions[1]
+	else:
+		text = Globals.hp_descriptions[0]
+	FightOptions._set_new_turn(text)
 
 func player_turn_state():
 	if Input.is_action_just_pressed("Action"):
@@ -96,6 +132,8 @@ func _on_option_item(item_name):
 	print("el jugador debe comer alguito:", item_name)
 
 func _on_attack_ready():
+	turn += 1
+	print("Avanzando al turno ", turn)
 	AnimStates.travel("KnifeAttack")
 	animState = animStates.KNIFE
 	#TODO - tambien hay q decirle al esqueleto loco q se mueva pa ete lao
@@ -123,7 +161,12 @@ func _set_attack_state():
 	state = states.ATTACK
 
 func attack_state():
-	print("Aun nos falta la preparación dx")
+	#TODO - Borrar esto, solo debug
+	if Input.is_action_just_pressed("Back"):
+		print("Saltanto ataque")
+		FightOptions.go_back()
+		_set_player_turn_state()
+		return
 
 # Funciones para cuando habla el esqueleto ketchup
 func dialogue_state():

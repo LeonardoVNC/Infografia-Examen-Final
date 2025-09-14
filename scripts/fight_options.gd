@@ -32,7 +32,6 @@ const SPRITES = {
 
 func _ready() -> void:
 	_prepare_bottom_options()
-	_set_new_turn()
 	
 func _prepare_bottom_options():
 	Fight.set_text("fight")
@@ -45,10 +44,13 @@ func _prepare_bottom_options():
 	Mercy.set_icon(SPRITES.mercy)
 	options = [Fight, Act, Item, Mercy]
 
-func _set_new_turn():
+func _set_new_turn(text: String):
+	set_bottom()
 	actual_option = 0
+	options[actual_option].set_selected()
 	isActing = false
-	options[0].set_selected()
+	UpperBox._set_new_turn()
+	UpperBox.set_description(text)
 	
 func set_items(item_list: Array[String]):
 	items = item_list

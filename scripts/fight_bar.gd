@@ -24,6 +24,7 @@ func reset_position():
 	DamageIndicator.position = Vector2(x,y)
 	
 func start_attack():
+	reset_position()
 	IndicatorTimer.start(0.01)
 
 func _on_indicator_timer_timeout() -> void:

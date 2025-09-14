@@ -16,6 +16,7 @@ var able_options = 0
 var upper_options = []
 var has_selected_option = false
 var is_attacking = false
+var attack_confirmed = false
 var full_text = ""
 var current_index = 0
 
@@ -109,20 +110,29 @@ func _set_new_turn():
 	able_options = 0
 	has_selected_option = false
 	is_attacking = false
+	attack_confirmed = false
 	
 func execute_option():
-	if (actual_option > able_options):
-		print("Algo raro está pasando en la selección de opciones")
-		return
-	if (is_attacking):
+	# Para atacar
+	if is_attacking:
+		if attack_confirmed:
+			print("Ya estás atacando, dame chance")
+			return
+		attack_confirmed = true
 		attack()
 		return
+		
+	# Para selección de opciones y tal
+	if actual_option >= able_options:
+		print("Algo raro está pasando en la selección de opciones")
+		return
 	
-	if (has_selected_option):
-		print("Cerrar ventana UI")
-		actionFinished.emit()
+	if has_selected_option:
+		if (!is_attacking):
+			print("Cerrar ventana UI")
+			actionFinished.emit()
 	else:
-		print("UpperBox: Ejecutando opcion %d"%actual_option)
+		print("UpperBox: Ejecutando opcion %d" % actual_option)
 		has_selected_option = true
 		optionSelected.emit(actual_option)
 
@@ -133,12 +143,16 @@ func show_fight_bar():
 	FightBar.show()
 	
 func start_attack():
-	FightBar.start_attack()
+	if is_attacking:
+		return
 	is_attacking = true
+	attack_confirmed = false
+	FightBar.start_attack()
 
 func attack():
 	FightBar.attack()
 	inputAttack.emit()
 
 func _on_fight_bar_timeout() -> void:
-	inputAttack.emit()
+	if (!attack_confirmed):
+		inputAttack.emit()
