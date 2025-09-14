@@ -1,10 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://5y460unwv8l7"]
+[gd_scene load_steps=27 format=3 uid="uid://5y460unwv8l7"]
 
 [ext_resource type="Texture2D" uid="uid://d31l6y55f4yl6" path="res://assets/background.png" id="1_s0nni"]
 [ext_resource type="Script" uid="uid://bmhkl6wgjhiye" path="res://scripts/game.gd" id="2_aug50"]
 [ext_resource type="PackedScene" uid="uid://b3lfauj5finik" path="res://scenes/FightUI.tscn" id="3_kiw3p"]
-[ext_resource type="PackedScene" uid="uid://birfv6m0k36kn" path="res://scenes/player.tscn" id="4_400sg"]
-[ext_resource type="PackedScene" uid="uid://x1gjxuymob11" path="res://scenes/Scenario.tscn" id="5_g4kob"]
+[ext_resource type="PackedScene" uid="uid://bk0i0jwxxljdb" path="res://scenes/FightScenario.tscn" id="4_qy1jj"]
 [ext_resource type="Texture2D" uid="uid://c80sgr4cyxwtw" path="res://assets/KnifeSprites.png" id="6_kiw3p"]
 [ext_resource type="Texture2D" uid="uid://heqlejip4mag" path="res://assets/Miss.png" id="7_400sg"]
 [ext_resource type="AudioStream" uid="uid://bg54dimw8ik2n" path="res://assets/sounds/slash.wav" id="7_g4kob"]
@@ -334,12 +333,7 @@ offset_top = 215.0
 offset_right = -38.0
 offset_bottom = -199.0
 
-[node name="Soul" parent="." instance=ExtResource("4_400sg")]
-position = Vector2(320, 295)
-
-[node name="Scenario" parent="." instance=ExtResource("5_g4kob")]
-visible = false
-position = Vector2(320, 295)
+[node name="FightScenario" parent="." instance=ExtResource("4_qy1jj")]
 
 [node name="FightEffects" type="Sprite2D" parent="."]
 position = Vector2(320, 115)

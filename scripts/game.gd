@@ -1,6 +1,6 @@
 extends TextureRect
 
-@onready var Player = $Soul
+@onready var Player = $FightScenario/Soul
 @onready var FightOptions = $FightUI
 @onready var Scenario = $Scenario
 @onready var OptionTimer = $OptionTimer
@@ -180,6 +180,7 @@ func _on_attack_ready():
 	print("Avanzando al turno ", turn)
 	AnimStates.travel("KnifeAttack")
 	animState = animStates.KNIFE
+	$FightScenario/Sans.dodge()
 	#TODO - tambien hay q decirle al esqueleto loco q se mueva pa ete lao
 	AnimTimer.start(0.6)
 

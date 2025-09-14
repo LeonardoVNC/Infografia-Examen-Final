@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk0i0jwxxljdb"]
+
+[ext_resource type="PackedScene" uid="uid://birfv6m0k36kn" path="res://scenes/player.tscn" id="1_sxv4e"]
+[ext_resource type="PackedScene" uid="uid://ddk6q8v4qokko" path="res://scenes/Sans.tscn" id="2_vts4l"]
+
+[node name="FightScenario" type="Node2D"]
+metadata/_edit_vertical_guides_ = [320.0]
+
+[node name="Soul" parent="." instance=ExtResource("1_sxv4e")]
+position = Vector2(320, 295)
+
+[node name="Sans" parent="." instance=ExtResource("2_vts4l")]
+position = Vector2(320, 95)
