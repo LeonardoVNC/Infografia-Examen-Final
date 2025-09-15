@@ -1,13 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk0i0jwxxljdb"]
+[gd_scene load_steps=9 format=3 uid="uid://bk0i0jwxxljdb"]
 
+[ext_resource type="Script" uid="uid://237yoonox3da" path="res://scripts/fight_scenario.gd" id="1_b02qi"]
 [ext_resource type="PackedScene" uid="uid://birfv6m0k36kn" path="res://scenes/player.tscn" id="1_sxv4e"]
 [ext_resource type="PackedScene" uid="uid://ddk6q8v4qokko" path="res://scenes/Sans.tscn" id="2_vts4l"]
+[ext_resource type="Script" uid="uid://qqhi1oce1vd2" path="res://scripts/scenario.gd" id="3_vts4l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vts4l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b02qi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3c38h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xx7iy"]
 
 [node name="FightScenario" type="Node2D"]
+script = ExtResource("1_b02qi")
 metadata/_edit_vertical_guides_ = [320.0]
 
 [node name="Soul" parent="." instance=ExtResource("1_sxv4e")]
-position = Vector2(320, 295)
+position = Vector2(320, 303)
 
 [node name="Sans" parent="." instance=ExtResource("2_vts4l")]
 position = Vector2(320, 95)
+
+[node name="Scenario" type="Node2D" parent="."]
+position = Vector2(320, 285)
+script = ExtResource("3_vts4l")
+
+[node name="WallTop" type="StaticBody2D" parent="Scenario"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scenario/WallTop"]
+shape = SubResource("RectangleShape2D_vts4l")
+
+[node name="WallBottom" type="StaticBody2D" parent="Scenario"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scenario/WallBottom"]
+shape = SubResource("RectangleShape2D_b02qi")
+
+[node name="WallLeft" type="StaticBody2D" parent="Scenario"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scenario/WallLeft"]
+shape = SubResource("RectangleShape2D_3c38h")
+
+[node name="WallRight" type="StaticBody2D" parent="Scenario"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scenario/WallRight"]
+shape = SubResource("RectangleShape2D_xx7iy")
+
+[node name="Line2D" type="Line2D" parent="Scenario"]
+width = 4.0

@@ -1,14 +1,14 @@
 extends TextureRect
 
-@onready var Player = $FightScenario/Soul
 @onready var FightOptions = $FightUI
-@onready var Scenario = $Scenario
-@onready var OptionTimer = $OptionTimer
-@onready var AnimTimer = $AnimTimer
-@onready var AnimTree = $AnimationTree
-@onready var AnimStates = $AnimationTree.get("parameters/playback")
+@onready var Scenario = $FightScenario
+@onready var Player = $FightScenario/Soul
+@onready var AnimTree = $Utils/AnimationTree
+@onready var AnimStates = $Utils/AnimationTree.get("parameters/playback")
+@onready var OptionTimer = $Utils/OptionTimer
+@onready var AnimTimer = $Utils/AnimTimer
+@onready var BackAudio = $Utils/BackgroundAudioPlayer
 @onready var UpperBox = $FightUI/VBox/UpperBox
-@onready var BackAudio = $BackgroundAudioPlayer
 
 enum states {PREPARATION, PLAYER_TURN, ATTACK, DIALOGUE}
 enum animStates {REST, KNIFE, MISS, DMG}
@@ -71,7 +71,7 @@ func preparation_state():
 
 # Funciones para el turno del jugador
 func _set_player_turn_state():
-	Player.disable()
+	Scenario.finish_turn()
 	state = states.PLAYER_TURN
 	_set_description_new_turn()
 	
@@ -180,8 +180,7 @@ func _on_attack_ready():
 	print("Avanzando al turno ", turn)
 	AnimStates.travel("KnifeAttack")
 	animState = animStates.KNIFE
-	$FightScenario/Sans.dodge()
-	#TODO - tambien hay q decirle al esqueleto loco q se mueva pa ete lao
+	Scenario.sans_dodge()
 	AnimTimer.start(0.6)
 
 func _on_anim_timer_timeout() -> void:
@@ -196,13 +195,12 @@ func _on_anim_timer_timeout() -> void:
 	
 func _on_fight_ui_ready_to_close() -> void:
 	FightOptions.set_sans_attack()
-	
-	#TODO - Mostrar el Scenario
 	_set_attack_state()
 
 # Funciones para el turno del esqueleto ketchup
 func _set_attack_state():
-	Player.able()
+	#TODO - Manejar la lógica de turnos aqui
+	Scenario.set_new_turn(Vector2(270,170))
 	state = states.ATTACK
 
 func attack_state():

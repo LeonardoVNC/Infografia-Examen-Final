@@ -1,45 +1,40 @@
 extends Node2D
 
-@export var area_size = Vector2(300, 200)
-@export var wall_thickness = 4
-@export var border_color = Color(1, 1, 1)
+# Guia tamaño bleh: _,170 Max
+@export var default = Vector2(170, 170)
+@export var wall_width = 10
+
+@onready var WallTop = $WallTop
+@onready var WallBottom = $WallBottom
+@onready var WallLeft = $WallLeft
+@onready var WallRight = $WallRight
+@onready var Line = $Line2D
 
 func _ready():
-	print("TODO-Arreglar escenario")
-	#_create_walls()
+	set_scenario_size(default)
 
-func _create_walls():
-	var walls = $Walls.get_children()
-	if walls.size() == 0:
-		for name in ["WallTop", "WallBottom", "WallLeft", "WallRight"]:
-			var wall = StaticBody2D.new()
-			wall.name = name
-			var shape = CollisionShape2D.new()
-			shape.shape = RectangleShape2D.new()
-			wall.add_child(shape)
-			$Walls.add_child(wall)
+func set_scenario_size(new_size: Vector2) -> void:
+	var half_size = new_size / 2
 	
-	_update_walls()
+	_set_wall(WallTop, Vector2(0, -half_size.y), Vector2(new_size.x, wall_width))
+	_set_wall(WallBottom, Vector2(0, half_size.y), Vector2(new_size.x, wall_width))
+	_set_wall(WallLeft, Vector2(-half_size.x, 0), Vector2(wall_width, new_size.y))
+	_set_wall(WallRight, Vector2(half_size.x, 0), Vector2(wall_width, new_size.y))
 
-func _update_walls():
-	var half_size = area_size / 2
-	var half_thick = wall_thickness / 2
-	$Walls/WallTop.position = Vector2(0, -half_size.y + half_thick)
-	$Walls/WallTop/CollisionShape2D.shape.extents = Vector2(half_size.x, half_thick)
-	
-	$Walls/WallBottom.position = Vector2(0, half_size.y - half_thick)
-	$Walls/WallBottom/CollisionShape2D.shape.extents = Vector2(half_size.x, half_thick)
-	
-	$Walls/WallLeft.position = Vector2(-half_size.x + half_thick, 0)
-	$Walls/WallLeft/CollisionShape2D.shape.extents = Vector2(half_thick, half_size.y)
-	
-	$Walls/WallRight.position = Vector2(half_size.x - half_thick, 0)
-	$Walls/WallRight/CollisionShape2D.shape.extents = Vector2(half_thick, half_size.y)
+	if Line:
+		var points = [
+			Vector2(-half_size.x, -half_size.y),
+			Vector2(half_size.x, -half_size.y),
+			Vector2(half_size.x, half_size.y),
+			Vector2(-half_size.x, half_size.y),
+			Vector2(-half_size.x, -half_size.y)
+		]
+		Line.points = points
 
-func _draw():
-	print("TODO-Arreglar dibujado de escenario")
-	#draw_rect(Rect2(-area_size / 2, area_size), border_color, false, wall_thickness)
-
-func set_area_size(new_size: Vector2) -> void:
-	area_size = new_size
-	_update_walls()
+func _set_wall(wall: StaticBody2D, position: Vector2, size: Vector2) -> void:
+	wall.position = position
+	var shape = wall.get_node("CollisionShape2D").shape
+	if shape is RectangleShape2D:
+		shape.size = size
+	else:
+		push_error("CollisionShape2D no es RectangleShape2D en " + wall.name)
