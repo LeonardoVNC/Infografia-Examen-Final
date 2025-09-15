@@ -200,7 +200,8 @@ func _on_fight_ui_ready_to_close() -> void:
 # Funciones para el turno del esqueleto ketchup
 func _set_attack_state():
 	var scenarioSize = _get_scenario_size()
-	Scenario.set_new_turn(scenarioSize)
+	var isPlayerBlue = _get_player_mode_blue()
+	Scenario.set_new_turn(scenarioSize, isPlayerBlue)
 	state = states.ATTACK
 
 func attack_state():
@@ -234,6 +235,10 @@ func _get_scenario_size() -> Vector2:
 			return Vector2(310,130)
 		23, _:
 			return Vector2(160,160)
+	
+func _get_player_mode_blue() -> bool:
+	#Con cambio intermedio: 16,21,23
+	return turn != 0 && turn != 15 && turn != 19 && turn != 20
 
 # Funciones para cuando habla el esqueleto ketchup
 func dialogue_state():
