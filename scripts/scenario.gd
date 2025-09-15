@@ -1,7 +1,7 @@
 extends Node2D
 
 # Guia tamaño bleh: _,170 Max
-@export var default = Vector2(170, 170)
+@export var default = Vector2(150, 150)
 @export var wall_width = 10
 
 @onready var WallTop = $WallTop
