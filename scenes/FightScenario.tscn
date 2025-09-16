@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bk0i0jwxxljdb"]
+[gd_scene load_steps=10 format=3 uid="uid://bk0i0jwxxljdb"]
 
 [ext_resource type="Script" uid="uid://237yoonox3da" path="res://scripts/fight_scenario.gd" id="1_b02qi"]
 [ext_resource type="PackedScene" uid="uid://birfv6m0k36kn" path="res://scenes/player.tscn" id="1_sxv4e"]
 [ext_resource type="PackedScene" uid="uid://ddk6q8v4qokko" path="res://scenes/Sans.tscn" id="2_vts4l"]
 [ext_resource type="Script" uid="uid://qqhi1oce1vd2" path="res://scripts/scenario.gd" id="3_vts4l"]
+[ext_resource type="Script" uid="uid://c5yuo5hn17fd6" path="res://scripts/attacks_manager.gd" id="5_3c38h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vts4l"]
 
@@ -49,3 +50,8 @@ shape = SubResource("RectangleShape2D_xx7iy")
 
 [node name="Line2D" type="Line2D" parent="Scenario"]
 width = 4.0
+
+[node name="AttacksManager" type="Node2D" parent="."]
+script = ExtResource("5_3c38h")
+
+[node name="BonesContainer" type="Node2D" parent="AttacksManager"]

@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 @onready var Sprite = $Sprite
+@onready var ColissionTimer = $Utils/ColissionTimer
+@onready var AnimTree = $Utils/AnimationTree
+@onready var AnimStates = $Utils/AnimationTree.get("parameters/playback")
 
 @export var hp = 92
 @export var gravity = 750.0
@@ -18,6 +21,9 @@ var original_position: Vector2
 
 const SPEED = 180
 const MAX_HP = 92
+
+signal hp_changed(new_hp)
+signal death()
 
 func _ready():
 	original_position = global_position
@@ -56,13 +62,40 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2.ZERO
 	move_and_slide()
 
+func hurt(dmg: int):
+	if(!hasHurtWindow):
+		hp -= dmg
+		if(hp<=0):
+			on_death()
+			return
+		AnimStates.travel("Hurt")
+		hp_changed.emit(hp)
+		hasHurtWindow = true
+		ColissionTimer.start(0.01)
+
+func on_death():
+	global_position = original_position
+	velocity = Vector2.ZERO
+	isBlue = false
+	canMove = false
+	Sprite.modulate = Color(1,0,0,1)
+	
+	AnimStates.travel("Death")
+	
+	death.emit()
+	
+func _on_colission_timer_timeout() -> void:
+	hasHurtWindow = false
+
 func recover_hp(rec_hp: int) -> bool:
 	var new_hp = hp + rec_hp
 	if new_hp >= MAX_HP:
 		hp = MAX_HP
+		hp_changed.emit(hp)
 		return true
 	else:
 		hp = new_hp
+		hp_changed.emit(hp)
 		return false
 
 func set_new_turn(new_isBlue: bool):

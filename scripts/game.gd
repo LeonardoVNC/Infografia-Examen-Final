@@ -45,6 +45,8 @@ func _ready() -> void:
 	FightOptions.hide()
 	FightOptions.item.connect(_on_option_item)
 	UpperBox.inputAttack.connect(_on_attack_ready)
+	Player.hp_changed.connect(_on_hp_changed)
+	Player.death.connect(_on_player_death)
 	FightOptions.set_items(items)
 
 func _physics_process(delta: float) -> void:
@@ -162,7 +164,6 @@ func _on_option_item(item_index):
 	var message = items_data[item_name]["message"]
 	
 	var isHpFilled = Player.recover_hp(hp_recover)
-	#TODO - Actualizar el UI con la vida igual, mejor si es manejo de señales
 	
 	var text
 	if (isHpFilled):
@@ -243,3 +244,13 @@ func _get_player_mode_blue() -> bool:
 # Funciones para cuando habla el esqueleto ketchup
 func dialogue_state():
 	print("Aun nos falta la preparación dx")
+	
+# Funciones del player
+func _on_hp_changed(new_hp: int):
+	FightOptions.update_hp(new_hp)
+	
+func _on_player_death():
+	FightOptions.hide()
+	BackAudio.stop()
+	Scenario.on_death()
+	

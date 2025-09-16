@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckklur6xtynnp"]
+
+[ext_resource type="Script" uid="uid://baex3r0nyheig" path="res://scripts/bone.gd" id="1_x2ypy"]
+[ext_resource type="Texture2D" uid="uid://cmeju1bdbmumn" path="res://assets/Bone_MW.png" id="2_vxfe3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vb6e"]
+size = Vector2(10, 38)
+
+[node name="Bone" type="Area2D"]
+script = ExtResource("1_x2ypy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8vb6e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vxfe3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -180,6 +180,10 @@ func execute_bottom_option():
 			UpperBox.set_options(mercy_options)
 	set_options()
 
+# Actualización de la UI
+func update_hp(new_hp: int):
+	SoulUI.update_hp(new_hp)
+
 # Audio
 func audio_select():
 	AudioPlayer.play_select()
