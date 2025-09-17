@@ -57,10 +57,14 @@ func _get_scenario_size(turn: int) -> Vector2:
 func set_attack (turn: int, size: Vector2):
 	AttacksManager.set_scenario_size(size)
 	match turn:
-		1:
-			AttacksManager.start_basic_jump_bone_attack()
+		1,10:
+			AttacksManager.start_attack("basic_jump")
+		2:
+			AttacksManager.start_attack("lateral_blue")
+		11:
+			AttacksManager.start_attack("lateral_jump")
 		_:
-			AttacksManager.spawn_bone_pattern()
+			AttacksManager.start_attack("basic_jump")
 	
 # Funciones para Sans
 func sans_dodge():
