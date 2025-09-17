@@ -73,3 +73,9 @@ func set_attack (turn: int, size: Vector2):
 # Funciones para Sans
 func sans_dodge():
 	Sans.dodge()
+	
+func set_dialogue(text: String):
+	Sans.talk(text)
+
+func hide_dialogue():
+	Sans.hide_text()

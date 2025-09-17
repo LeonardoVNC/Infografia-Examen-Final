@@ -13,6 +13,7 @@ extends TextureRect
 
 enum states {PREPARATION, PLAYER_TURN, ATTACK, DIALOGUE}
 enum animStates {REST, KNIFE, MISS, DMG}
+var isReady = false
 var state = states.PREPARATION
 var animState = animStates.REST
 var can_change_option = true
@@ -64,14 +65,15 @@ func _physics_process(delta: float) -> void:
 
 # Funciones para el primer turno
 func preparation_state():
-	#TODO - Pensar si aqui ponemos los primeros dialogos igual o q onda
 	if Input.is_action_just_pressed("Action"):
-		print("Cambiando a ataque aaa")
-		FightOptions.show()
-		#TODO - De hecho toda esta etapa es... rara... pasamos de dialogo a ataque a dialogo a turno
-		# piensalo mejor, pero, más adelante, de momento esto safa dx
-		_set_player_turn_state()
-		BackAudio.play()
+		if (isReady):
+			FightOptions.show()
+			Scenario.hide_dialogue();
+			_set_player_turn_state()
+			BackAudio.play()
+		else:
+			Scenario.set_dialogue("Preparado, amigo?")
+			isReady = true
 
 # Funciones para el turno del jugador
 func _set_player_turn_state():
@@ -220,7 +222,7 @@ func _get_player_mode_blue() -> bool:
 
 # Funciones para cuando habla el esqueleto ketchup
 func dialogue_state():
-	print("Aun nos falta la preparación dx")
+	pass
 	
 # Funciones del player
 func _on_hp_changed(new_hp: int):

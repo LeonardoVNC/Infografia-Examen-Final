@@ -1,9 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://ddk6q8v4qokko"]
+[gd_scene load_steps=21 format=3 uid="uid://ddk6q8v4qokko"]
 
 [ext_resource type="Script" uid="uid://bqoqg8mbentx8" path="res://scripts/sans.gd" id="1_brnbe"]
 [ext_resource type="Texture2D" uid="uid://coc6le1oslboi" path="res://assets/Sans_Legs-Sheet.png" id="1_kbv4s"]
 [ext_resource type="Texture2D" uid="uid://cqhqnbeuauuy1" path="res://assets/Sans_Body-Sheet.png" id="2_brnbe"]
 [ext_resource type="Texture2D" uid="uid://d0niskl0hlvs7" path="res://assets/Sans_Heads-Sheet.png" id="3_dyeqy"]
+[ext_resource type="Texture2D" uid="uid://cpaj1y3dhaj8g" path="res://assets/text.png" id="5_7nngv"]
+[ext_resource type="FontFile" uid="uid://crbg3uc81ttys" path="res://assets/fonts/en/fnt_comicsans.ttf" id="6_obyvd"]
+[ext_resource type="AudioStream" uid="uid://d330k028bxab8" path="res://assets/sounds/snd_txtsans.wav" id="7_obyvd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ac6o"]
+font = ExtResource("6_obyvd")
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_dyeqy"]
 resource_name = "Dodge"
@@ -244,11 +251,41 @@ texture = ExtResource("3_dyeqy")
 hframes = 4
 vframes = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Text" type="Node2D" parent="."]
+visible = false
+position = Vector2(90.6667, -110.667)
+
+[node name="TextureRect" type="TextureRect" parent="Text"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_7nngv")
+
+[node name="Label" type="Label" parent="Text"]
+offset_left = 43.0
+offset_top = 15.0
+offset_right = 201.0
+offset_bottom = 203.0
+text = "Texto de prueba pero asi medianamente largo"
+label_settings = SubResource("LabelSettings_4ac6o")
+autowrap_mode = 2
+
+[node name="Utils" type="Node" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Utils"]
+root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_dyeqy")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="Utils"]
+root_node = NodePath("../..")
 tree_root = SubResource("AnimationNodeStateMachine_kbv4s")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="Utils"]
+stream = ExtResource("7_obyvd")
+
+[node name="EeeTimer" type="Timer" parent="Utils"]
+wait_time = 0.05
+
+[connection signal="timeout" from="Utils/EeeTimer" to="." method="_on_eee_timer_timeout"]

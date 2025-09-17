@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmbu46225usmc"
-path="res://.godot/imported/Bone_H.png-72654dda6e6de4b70ac6d148bd7ce08e.ctex"
+uid="uid://cpaj1y3dhaj8g"
+path="res://.godot/imported/text.png-e3ddd9f9b1b7d9168ee5ca3d96c1bf48.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sounds/Bone_H.png"
-dest_files=["res://.godot/imported/Bone_H.png-72654dda6e6de4b70ac6d148bd7ce08e.ctex"]
+source_file="res://assets/text.png"
+dest_files=["res://.godot/imported/text.png-e3ddd9f9b1b7d9168ee5ca3d96c1bf48.ctex"]
 
 [params]
 
