@@ -9,7 +9,7 @@ var attack_timer: Timer
 var bone_timer: Timer
 var bone_index_in_tanda = 0
 
-var bottom_y = 335
+var bottom_y = 340
 
 func _init(bones_pool_ref):
 	bones_pool = bones_pool_ref

@@ -256,15 +256,15 @@ visible = false
 position = Vector2(90.6667, -110.667)
 
 [node name="TextureRect" type="TextureRect" parent="Text"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 295.0
+offset_bottom = 216.0
 texture = ExtResource("5_7nngv")
 
 [node name="Label" type="Label" parent="Text"]
-offset_left = 43.0
-offset_top = 15.0
-offset_right = 201.0
-offset_bottom = 203.0
+offset_left = 52.0
+offset_top = 13.0
+offset_right = 283.0
+offset_bottom = 201.0
 text = "Texto de prueba pero asi medianamente largo"
 label_settings = SubResource("LabelSettings_4ac6o")
 autowrap_mode = 2

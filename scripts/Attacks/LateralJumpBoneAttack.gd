@@ -41,8 +41,8 @@ func _on_attack_timer_timeout():
 func _spawn_lateral_jump_attack_tanda(tanda_index):
 	var left_x = lx
 	var right_x = rx
-	var bottom_y = 335
-	var top_y = 260
+	var bottom_y = 345
+	var top_y = 265
 
 	var base_index = tanda_index * 2
 	if base_index + 1 >= bones_pool.size():

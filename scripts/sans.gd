@@ -17,7 +17,7 @@ func dodge():
 	AnimStates.travel("Dodge")
 
 func talk(newText: String) -> void:
-	text = newText
+	text = newText.to_lower()
 	textIndex = 0
 	Text.show()
 	TextLabel.text = ""

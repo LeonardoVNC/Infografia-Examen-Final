@@ -72,7 +72,7 @@ func preparation_state():
 			_set_player_turn_state()
 			BackAudio.play()
 		else:
-			Scenario.set_dialogue("Preparado, amigo?")
+			Scenario.set_dialogue("preparado, amigo?")
 			isReady = true
 
 # Funciones para el turno del jugador
@@ -196,7 +196,19 @@ func _on_anim_timer_timeout() -> void:
 			animState = animStates.MISS
 			AnimTimer.start(1.8)
 		animStates.MISS:
-			_on_fight_ui_ready_to_close()
+			_on_player_attack_finished()
+
+func _on_player_attack_finished():
+	if turn - 1 < Globals.dialogue_after_attack.size():
+		var dialogue_text = Globals.dialogue_after_attack[turn - 1]
+		if dialogue_text.strip_edges() != "":
+			_start_dialogue(dialogue_text)
+			return
+	_on_fight_ui_ready_to_close()
+	
+func _start_dialogue(text: String) -> void:
+	state = states.DIALOGUE
+	Scenario.set_dialogue(text)
 	
 func _on_fight_ui_ready_to_close() -> void:
 	FightOptions.set_sans_attack()
@@ -222,7 +234,9 @@ func _get_player_mode_blue() -> bool:
 
 # Funciones para cuando habla el esqueleto ketchup
 func dialogue_state():
-	pass
+	if Input.is_action_just_pressed("Action"):
+		Scenario.hide_dialogue()
+		_on_fight_ui_ready_to_close()
 	
 # Funciones del player
 func _on_hp_changed(new_hp: int):

@@ -37,7 +37,7 @@ func _spawn_jump_attack_tanda(tanda_index):
 	var left_x = lx
 	var right_x = rx
 	var top_y = 260
-	var bottom_y = 335
+	var bottom_y = 340
 
 	var base_index = tanda_index * 4
 	if base_index + 3 >= bones_pool.size():
