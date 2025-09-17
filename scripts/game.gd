@@ -200,9 +200,8 @@ func _on_fight_ui_ready_to_close() -> void:
 
 # Funciones para el turno del esqueleto ketchup
 func _set_attack_state():
-	var scenarioSize = _get_scenario_size()
 	var isPlayerBlue = _get_player_mode_blue()
-	Scenario.set_new_turn(scenarioSize, isPlayerBlue)
+	Scenario.set_new_turn(turn, isPlayerBlue)
 	state = states.ATTACK
 
 func attack_state():
@@ -212,30 +211,6 @@ func attack_state():
 		FightOptions.go_back()
 		_set_player_turn_state()
 		return
-		
-func _get_scenario_size() -> Vector2:
-	match turn:
-		0,1,2,3,4,6,8,10,11,12,13:
-			#Comunes
-			return Vector2(300,140)
-		7,9:
-			#Plataformas sin suelo (?)
-			return Vector2(340,160)
-		15,19:
-			#Gaster Blasters
-			return Vector2(350,170)
-		17,18,20,22:
-			#Gravity! y circulitos
-			return Vector2(160,160)
-	# Turnos con cambio en medio turno: 14, 16, 21, 23, requiere mayor detenimiento, de momento el basico
-	# 14: 310,130?  > 280, 130 > 310,130 I > 280,130
-	# 16: 310,130 > 220,160 > 160,160 > 310,130 > 160,160 
-	# 21: 310, 130 > 280, 130 I > 310, 130 I > 220,160
-	# 23: 160,160 I > X, 145 > 160,160 hasta acabar
-		14,16,21:
-			return Vector2(310,130)
-		23, _:
-			return Vector2(160,160)
 	
 func _get_player_mode_blue() -> bool:
 	#Con cambio intermedio: 16,21,23
