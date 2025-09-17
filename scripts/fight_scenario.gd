@@ -15,7 +15,7 @@ func set_new_turn(turn: int, isBlue: bool):
 	Scenario.set_scenario_size(size)
 	Scenario.show();
 	Soul.set_new_turn(isBlue);
-	set_attack(turn)
+	set_attack(turn, size)
 	tanda_timer = 0
 	attack_in_progress = false
 
@@ -54,7 +54,8 @@ func _get_scenario_size(turn: int) -> Vector2:
 		23, _:
 			return Vector2(160,160)
 
-func set_attack (turn: int):
+func set_attack (turn: int, size: Vector2):
+	AttacksManager.set_scenario_size(size)
 	match turn:
 		1:
 			AttacksManager.start_basic_jump_bone_attack()

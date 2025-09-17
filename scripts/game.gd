@@ -3,6 +3,7 @@ extends TextureRect
 @onready var FightOptions = $FightUI
 @onready var Scenario = $FightScenario
 @onready var Player = $FightScenario/Soul
+@onready var AttackMan = $FightScenario/AttacksManager
 @onready var AnimTree = $Utils/AnimationTree
 @onready var AnimStates = $Utils/AnimationTree.get("parameters/playback")
 @onready var OptionTimer = $Utils/OptionTimer
@@ -47,6 +48,7 @@ func _ready() -> void:
 	UpperBox.inputAttack.connect(_on_attack_ready)
 	Player.hp_changed.connect(_on_hp_changed)
 	Player.death.connect(_on_player_death)
+	AttackMan.attack_finished.connect(_on_attack_finished)
 	FightOptions.set_items(items)
 
 func _physics_process(delta: float) -> void:
@@ -205,13 +207,13 @@ func _set_attack_state():
 	state = states.ATTACK
 
 func attack_state():
-	#TODO - Borrar esto, solo debug
-	if Input.is_action_just_pressed("Back"):
-		print("Saltanto ataque")
-		FightOptions.go_back()
-		_set_player_turn_state()
-		return
-	
+	pass
+
+func _on_attack_finished():
+	FightOptions.go_back()
+	_set_player_turn_state()
+	return
+
 func _get_player_mode_blue() -> bool:
 	#Con cambio intermedio: 16,21,23
 	return turn != 0 && turn != 15 && turn != 19 && turn != 20

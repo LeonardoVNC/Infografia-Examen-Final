@@ -1,11 +1,16 @@
 extends Node
 
 @onready var bones_container = $BonesContainer
+const MID_X = 320
+var scenario_size = Vector2(640,480)
+var lx = MID_X-scenario_size.x/2
+var rx = MID_X+scenario_size.x/2
+
 var bone_scene = preload("res://scenes/Bone.tscn")
 var bones_pool: Array = []
 var current_jump_tanda = 0
 var max_jump_tandas = 8
-var tanda_interval = 1.5
+var tanda_interval = 0.8
 var attack_timer: Timer
 
 signal attack_finished
@@ -21,6 +26,11 @@ func _ready():
 	attack_timer.wait_time = tanda_interval
 	attack_timer.one_shot = false
 	attack_timer.connect("timeout", Callable(self, "_on_attack_timer_timeout"))
+
+func set_scenario_size(size: Vector2):
+	scenario_size = size
+	lx = MID_X-scenario_size.x/2
+	rx = MID_X+scenario_size.x/2
 
 func start_basic_jump_bone_attack():
 	current_jump_tanda = 0
@@ -38,8 +48,8 @@ func _on_attack_timer_timeout():
 	current_jump_tanda += 1
 
 func _spawn_jump_attack_tanda(tanda_index):
-	var left_x = 0
-	var right_x = 640
+	var left_x = lx
+	var right_x = rx
 	var top_y = 260
 	var bottom_y = 335
 
@@ -82,7 +92,7 @@ func reset_all_bones():
 
 func _process(delta):
 	for bone in bones_pool:
-		if bone.visible and (bone.position.x < -10 or bone.position.x > 650):
+		if bone.visible and (bone.position.x < lx or bone.position.x > rx):
 			bone.disable()
 			bone.reset_position()
 			bone.speed = 0
