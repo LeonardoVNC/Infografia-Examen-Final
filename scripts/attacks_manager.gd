@@ -40,6 +40,9 @@ func start_attack(attack_name: String):
 		"lateral_blue":
 			var AttackClass = preload("res://scripts/Attacks/LateralBlueJumpBoneAttack.gd")
 			active_attack = AttackClass.new(bones_pool)
+		"random_basic_jump":
+			var AttackClass = preload("res://scripts/Attacks/RandomJumpBoneAttack.gd")
+			active_attack = AttackClass.new(bones_pool)
 		_:
 			print("Ataque desconocido: ", attack_name)
 			return

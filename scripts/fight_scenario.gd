@@ -32,7 +32,7 @@ func on_death():
 	
 func _get_scenario_size(turn: int) -> Vector2:
 	match turn:
-		0,1,2,3,4,6,8,10,11,12,13:
+		0,1,2,3,4,5,6,8,10,11,12,13:
 			#Comunes
 			return Vector2(300,140)
 		7,9:
@@ -61,10 +61,14 @@ func set_attack (turn: int, size: Vector2):
 			AttacksManager.start_attack("basic_jump")
 		2:
 			AttacksManager.start_attack("lateral_blue")
+		3,12:
+			AttacksManager.start_attack("random_basic_jump")
 		11:
 			AttacksManager.start_attack("lateral_jump")
 		_:
-			AttacksManager.start_attack("basic_jump")
+			var attacks = ["basic_jump", "lateral_blue", "random_basic_jump", "lateral_jump"]
+			var random_attack = attacks[randi() % attacks.size()]
+			AttacksManager.start_attack(random_attack)
 	
 # Funciones para Sans
 func sans_dodge():
