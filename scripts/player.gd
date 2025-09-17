@@ -71,7 +71,7 @@ func hurt(dmg: int):
 		AnimStates.travel("Hurt")
 		hp_changed.emit(hp)
 		hasHurtWindow = true
-		ColissionTimer.start(0.01)
+		ColissionTimer.start(0.001)
 
 func on_death():
 	global_position = original_position
