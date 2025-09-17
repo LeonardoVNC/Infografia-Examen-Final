@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coc6le1oslboi"
-path="res://.godot/imported/Sans_Legs-Sheet.png-68f70f7565dec15029afe64097aefc75.ctex"
+uid="uid://k04bjhhon8wq"
+path="res://.godot/imported/DamageIndicator.png-b291b58dafa95096250c124fcc586ea8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sans_Legs-Sheet.png"
-dest_files=["res://.godot/imported/Sans_Legs-Sheet.png-68f70f7565dec15029afe64097aefc75.ctex"]
+source_file="res://assets/images/DamageIndicator.png"
+dest_files=["res://.godot/imported/DamageIndicator.png-b291b58dafa95096250c124fcc586ea8.ctex"]
 
 [params]
 

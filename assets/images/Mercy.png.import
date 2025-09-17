@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k04bjhhon8wq"
-path="res://.godot/imported/DamageIndicator.png-3027b9549d76c57db5f7c484a4158c44.ctex"
+uid="uid://bti3fxf32pcot"
+path="res://.godot/imported/Mercy.png-52843c50744f6ec61ef207a6a67227d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/DamageIndicator.png"
-dest_files=["res://.godot/imported/DamageIndicator.png-3027b9549d76c57db5f7c484a4158c44.ctex"]
+source_file="res://assets/images/Mercy.png"
+dest_files=["res://.godot/imported/Mercy.png-52843c50744f6ec61ef207a6a67227d9.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n228pie1bpxp"
-path="res://.godot/imported/999.png-210d9a36e70fea5884d5652165a56166.ctex"
+uid="uid://heqlejip4mag"
+path="res://.godot/imported/Miss.png-618cad70b7c03b03f5ac7e08a5ff2b56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/999.png"
-dest_files=["res://.godot/imported/999.png-210d9a36e70fea5884d5652165a56166.ctex"]
+source_file="res://assets/images/Miss.png"
+dest_files=["res://.godot/imported/Miss.png-618cad70b7c03b03f5ac7e08a5ff2b56.ctex"]
 
 [params]
 

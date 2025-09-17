@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cmlyjfrdq75xa"]
 
-[ext_resource type="Texture2D" uid="uid://bstymes4mo6kh" path="res://assets/Option.png" id="1_8tbg8"]
+[ext_resource type="Texture2D" uid="uid://bstymes4mo6kh" path="res://assets/images/Option.png" id="1_8tbg8"]
 [ext_resource type="Script" uid="uid://b6e53kf5o6u8v" path="res://scripts/in_fight_option.gd" id="2_77ox0"]
 [ext_resource type="FontFile" uid="uid://b8rsvuqqwe8t3" path="res://assets/fonts/en/fnt_main.ttf" id="3_h5l6l"]
-[ext_resource type="Texture2D" uid="uid://e5sybdgvwqqp" path="res://assets/Fight.png" id="4_tsfup"]
+[ext_resource type="Texture2D" uid="uid://e5sybdgvwqqp" path="res://assets/images/Fight.png" id="4_tsfup"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vtkkq"]
 font = ExtResource("3_h5l6l")

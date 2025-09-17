@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dqr7h0l8ptwg2"]
 
 [ext_resource type="FontFile" uid="uid://db7tuu0f1hdhw" path="res://assets/fonts/en/fnt_curs.ttf" id="1_6npx3"]
-[ext_resource type="Texture2D" uid="uid://bfw37nsn5yitf" path="res://assets/back.png" id="1_y0sbk"]
+[ext_resource type="Texture2D" uid="uid://bfw37nsn5yitf" path="res://assets/images/back.png" id="1_y0sbk"]
 [ext_resource type="Script" uid="uid://6pngnxs6emb1" path="res://scripts/soul_ui.gd" id="2_a7i3t"]
-[ext_resource type="Texture2D" uid="uid://3x2lrwedhvpb" path="res://assets/HP_Empty.png" id="2_eftit"]
-[ext_resource type="Texture2D" uid="uid://yw6f11iyycvi" path="res://assets/HP_Full.png" id="3_y0sbk"]
+[ext_resource type="Texture2D" uid="uid://3x2lrwedhvpb" path="res://assets/images/HP_Empty.png" id="2_eftit"]
+[ext_resource type="Texture2D" uid="uid://yw6f11iyycvi" path="res://assets/images/HP_Full.png" id="3_y0sbk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fn16f"]
 font = ExtResource("1_6npx3")

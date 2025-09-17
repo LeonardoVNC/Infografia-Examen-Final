@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bti3fxf32pcot"
-path="res://.godot/imported/Mercy.png-8a802e5f0222689bb4814de0333d24cf.ctex"
+uid="uid://ctloywowjbor2"
+path="res://.godot/imported/Bone_W.png-3a0f8593c8e10a4ffd2966b2920036fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Mercy.png"
-dest_files=["res://.godot/imported/Mercy.png-8a802e5f0222689bb4814de0333d24cf.ctex"]
+source_file="res://assets/images/Bone_W.png"
+dest_files=["res://.godot/imported/Bone_W.png-3a0f8593c8e10a4ffd2966b2920036fe.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nv1filui5mnk"
-path="res://.godot/imported/Bone_W.png-e7790334d8abfad4bb4110c0a1020b5d.ctex"
+uid="uid://3x2lrwedhvpb"
+path="res://.godot/imported/HP_Empty.png-5efad2808fb48f6f82c227d6ef13a3db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fonts/Bone_W.png"
-dest_files=["res://.godot/imported/Bone_W.png-e7790334d8abfad4bb4110c0a1020b5d.ctex"]
+source_file="res://assets/images/HP_Empty.png"
+dest_files=["res://.godot/imported/HP_Empty.png-5efad2808fb48f6f82c227d6ef13a3db.ctex"]
 
 [params]
 

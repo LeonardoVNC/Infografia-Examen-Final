@@ -24,10 +24,10 @@ signal item(item_index)
 signal readyToClose
 
 const SPRITES = {
-	"fight" : "res://assets/Fight.png",
-	"act" : "res://assets/Act.png",
-	"item" : "res://assets/Item.png",
-	"mercy" : "res://assets/Mercy.png",
+	"fight" : "res://assets/images/Fight.png",
+	"act" : "res://assets/images/Act.png",
+	"item" : "res://assets/images/Item.png",
+	"mercy" : "res://assets/images/Mercy.png",
 }
 
 func _ready() -> void:

@@ -1,13 +1,13 @@
 [gd_scene load_steps=27 format=3 uid="uid://5y460unwv8l7"]
 
-[ext_resource type="Texture2D" uid="uid://d31l6y55f4yl6" path="res://assets/background.png" id="1_s0nni"]
+[ext_resource type="Texture2D" uid="uid://d31l6y55f4yl6" path="res://assets/images/background.png" id="1_s0nni"]
 [ext_resource type="Script" uid="uid://bmhkl6wgjhiye" path="res://scripts/game.gd" id="2_aug50"]
 [ext_resource type="PackedScene" uid="uid://b3lfauj5finik" path="res://scenes/FightUI.tscn" id="3_kiw3p"]
 [ext_resource type="PackedScene" uid="uid://bk0i0jwxxljdb" path="res://scenes/FightScenario.tscn" id="4_qy1jj"]
-[ext_resource type="Texture2D" uid="uid://c80sgr4cyxwtw" path="res://assets/KnifeSprites.png" id="6_kiw3p"]
-[ext_resource type="Texture2D" uid="uid://heqlejip4mag" path="res://assets/Miss.png" id="7_400sg"]
+[ext_resource type="Texture2D" uid="uid://c80sgr4cyxwtw" path="res://assets/images/KnifeSprites.png" id="6_kiw3p"]
+[ext_resource type="Texture2D" uid="uid://heqlejip4mag" path="res://assets/images/Miss.png" id="7_400sg"]
 [ext_resource type="AudioStream" uid="uid://bg54dimw8ik2n" path="res://assets/sounds/slash.wav" id="7_g4kob"]
-[ext_resource type="Texture2D" uid="uid://n228pie1bpxp" path="res://assets/999.png" id="8_400sg"]
+[ext_resource type="Texture2D" uid="uid://n228pie1bpxp" path="res://assets/images/999.png" id="8_400sg"]
 [ext_resource type="AudioStream" uid="uid://ctr36rtnkf5vk" path="res://assets/sounds/snd_damage_c.wav" id="10_qy1jj"]
 [ext_resource type="AudioStream" uid="uid://dqgavsq2ylatb" path="res://assets/sounds/Undertale - Megalovania(MP3_128K).mp3" id="11_3xj3m"]
 

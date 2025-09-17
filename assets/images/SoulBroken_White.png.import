@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bstymes4mo6kh"
-path="res://.godot/imported/Option.png-997c3f602264265a34b0f5369c00b979.ctex"
+uid="uid://cossqvyq8825f"
+path="res://.godot/imported/SoulBroken_White.png-bea622a1aa13c6bda6d7c5de291be11b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Option.png"
-dest_files=["res://.godot/imported/Option.png-997c3f602264265a34b0f5369c00b979.ctex"]
+source_file="res://assets/images/SoulBroken_White.png"
+dest_files=["res://.godot/imported/SoulBroken_White.png-bea622a1aa13c6bda6d7c5de291be11b.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvwxkjp7h7lur"
-path="res://.godot/imported/Act.png-8b6114e7ebc38759aab85e11655e30ec.ctex"
+uid="uid://6jkcouhr5txc"
+path="res://.godot/imported/SoulBroken.png-dddf7ef73a69ddf11264d05b944e5d25.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Act.png"
-dest_files=["res://.godot/imported/Act.png-8b6114e7ebc38759aab85e11655e30ec.ctex"]
+source_file="res://assets/images/SoulBroken.png"
+dest_files=["res://.godot/imported/SoulBroken.png-dddf7ef73a69ddf11264d05b944e5d25.ctex"]
 
 [params]
 

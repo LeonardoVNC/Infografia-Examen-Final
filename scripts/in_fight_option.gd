@@ -7,7 +7,7 @@ var soul_texture
 var icon_texture
 
 func _ready():
-	var tex = load("res://assets/Soul.png")
+	var tex = load("res://assets/images/Soul.png")
 	soul_texture = tex
 
 func set_icon(path: String):

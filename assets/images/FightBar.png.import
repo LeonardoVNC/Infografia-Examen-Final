@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c80sgr4cyxwtw"
-path="res://.godot/imported/KnifeSprites.png-f66f93d8e27f3fc73ae5d99fdcc7666b.ctex"
+uid="uid://ct77l5gn52qtr"
+path="res://.godot/imported/FightBar.png-8c13b6be4341fd88228b74af79561231.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/KnifeSprites.png"
-dest_files=["res://.godot/imported/KnifeSprites.png-f66f93d8e27f3fc73ae5d99fdcc7666b.ctex"]
+source_file="res://assets/images/FightBar.png"
+dest_files=["res://.godot/imported/FightBar.png-8c13b6be4341fd88228b74af79561231.ctex"]
 
 [params]
 

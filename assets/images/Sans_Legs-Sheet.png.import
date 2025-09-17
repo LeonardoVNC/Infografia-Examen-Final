@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4x2pnok81vs8"
-path="res://.godot/imported/Soul_white.png-c358b40d1f8fa25fe15f6205200654fe.ctex"
+uid="uid://coc6le1oslboi"
+path="res://.godot/imported/Sans_Legs-Sheet.png-a5def666b38cba2cdfa0ec1bcd07c742.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Soul_white.png"
-dest_files=["res://.godot/imported/Soul_white.png-c358b40d1f8fa25fe15f6205200654fe.ctex"]
+source_file="res://assets/images/Sans_Legs-Sheet.png"
+dest_files=["res://.godot/imported/Sans_Legs-Sheet.png-a5def666b38cba2cdfa0ec1bcd07c742.ctex"]
 
 [params]
 

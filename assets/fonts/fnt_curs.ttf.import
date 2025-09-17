@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cv55da875xj3k"
-path="res://.godot/imported/fnt_curs.ttf-fcd0110fde83a9bf960efe7b84a4a0ca.fontdata"
+path="res://.godot/imported/fnt_curs.ttf-f5e2e5f6ba1d9d1d09c2df0292012488.fontdata"
 
 [deps]
 
-source_file="res://scenes/fnt_curs.ttf"
-dest_files=["res://.godot/imported/fnt_curs.ttf-fcd0110fde83a9bf960efe7b84a4a0ca.fontdata"]
+source_file="res://assets/fonts/fnt_curs.ttf"
+dest_files=["res://.godot/imported/fnt_curs.ttf-f5e2e5f6ba1d9d1d09c2df0292012488.fontdata"]
 
 [params]
 

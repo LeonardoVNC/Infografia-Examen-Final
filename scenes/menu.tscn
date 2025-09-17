@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://1yblgn0m2cu1"]
 
-[ext_resource type="Texture2D" uid="uid://d31l6y55f4yl6" path="res://assets/background.png" id="1_vjb58"]
+[ext_resource type="Texture2D" uid="uid://d31l6y55f4yl6" path="res://assets/images/background.png" id="1_vjb58"]
 [ext_resource type="Script" uid="uid://c3b5p4x8kcxkm" path="res://scripts/menu.gd" id="2_4ytvr"]
-[ext_resource type="Texture2D" uid="uid://ve14fmtc8ubk" path="res://assets/Undertale-Logo.png" id="2_con2f"]
+[ext_resource type="Texture2D" uid="uid://ve14fmtc8ubk" path="res://assets/images/Undertale-Logo.png" id="2_con2f"]
 [ext_resource type="FontFile" uid="uid://b5yss1q0iefku" path="res://assets/fonts/en/fnt_small.ttf" id="3_con2f"]
 [ext_resource type="PackedScene" uid="uid://cxlh6y68jpxht" path="res://scenes/Option.tscn" id="4_mhnvy"]
 

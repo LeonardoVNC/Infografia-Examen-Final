@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct77l5gn52qtr"
-path="res://.godot/imported/FightBar.png-ad11777ed83c126e500d5220a2195c0d.ctex"
+uid="uid://ckf6fbcumimtn"
+path="res://.godot/imported/Soul.png-a135265740722d71e61615735354fe39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/FightBar.png"
-dest_files=["res://.godot/imported/FightBar.png-ad11777ed83c126e500d5220a2195c0d.ctex"]
+source_file="res://assets/images/Soul.png"
+dest_files=["res://.godot/imported/Soul.png-a135265740722d71e61615735354fe39.ctex"]
 
 [params]
 

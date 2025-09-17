@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://dj0ucjvx6se0y"]
 
-[ext_resource type="Texture2D" uid="uid://cmqtff3vxiki3" path="res://assets/Menu.png" id="1_2namg"]
+[ext_resource type="Texture2D" uid="uid://cmqtff3vxiki3" path="res://assets/images/Menu.png" id="1_2namg"]
 [ext_resource type="FontFile" uid="uid://bprgjnaa7xvtv" path="res://assets/fonts/custom/fnt_maintext.ttf" id="2_mx253"]
 [ext_resource type="Script" uid="uid://dikxi8rk6ncba" path="res://scripts/upper_box.gd" id="2_ooyxi"]
 [ext_resource type="PackedScene" uid="uid://cxlh6y68jpxht" path="res://scenes/Option.tscn" id="3_ooyxi"]
-[ext_resource type="Texture2D" uid="uid://ct77l5gn52qtr" path="res://assets/FightBar.png" id="4_kvjcy"]
+[ext_resource type="Texture2D" uid="uid://ct77l5gn52qtr" path="res://assets/images/FightBar.png" id="4_kvjcy"]
 [ext_resource type="Script" uid="uid://drepblt4esa58" path="res://scripts/fight_bar.gd" id="5_yfnpn"]
-[ext_resource type="Texture2D" uid="uid://k04bjhhon8wq" path="res://assets/DamageIndicator.png" id="6_ul5ik"]
+[ext_resource type="Texture2D" uid="uid://k04bjhhon8wq" path="res://assets/images/DamageIndicator.png" id="6_ul5ik"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x2riw"]
 font = ExtResource("2_mx253")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0niskl0hlvs7"
-path="res://.godot/imported/Sans_Heads-Sheet.png-56e8949116f9f356ff712eb4968dc576.ctex"
+uid="uid://cqhqnbeuauuy1"
+path="res://.godot/imported/Sans_Body-Sheet.png-52ee2c2c3f2540cf034229b53b602a71.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sans_Heads-Sheet.png"
-dest_files=["res://.godot/imported/Sans_Heads-Sheet.png-56e8949116f9f356ff712eb4968dc576.ctex"]
+source_file="res://assets/images/Sans_Body-Sheet.png"
+dest_files=["res://.godot/imported/Sans_Body-Sheet.png-52ee2c2c3f2540cf034229b53b602a71.ctex"]
 
 [params]
 
